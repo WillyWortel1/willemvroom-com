@@ -1,7 +1,7 @@
 /* Preview: F1-stijl voor de homepage */
 :root{--font-sans:-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;--font-display:var(--font-sans);--color-bg:#f6f6f6;--color-fg:#111;--color-muted:#555;--color-subtle:#888;--color-line:#e6e6e6;--card:#fff;--accent:#d62828}
 html.dark{--color-bg:#0b0b0b;--color-fg:#eee;--color-muted:#aaa;--color-subtle:#777;--color-line:#262626;--card:#151515}
-body{font-family:var(--font-sans);font-size:15px;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-sans);font-size:.9375rem;-webkit-font-smoothing:antialiased}
 #top>header{background:color-mix(in srgb,var(--color-bg) 88%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--color-line)}
 #top>header a[href="#top"]{font-weight:700;letter-spacing:-.01em;font-size:.95rem}
 #top>header,#inhoud>section{max-width:none}
@@ -64,3 +64,12 @@ a.dl,html.dark a.dl,a.dl svg{color:#d62828!important}
 a.dl.hs-btn{border-color:#d62828!important}
 a.dl.hs-btn.solid,html.dark a.dl.hs-btn.solid{background:#d62828!important;color:#fff!important}
 a.dl.hs-btn.solid svg{color:#fff!important}
+#ts{display:inline-flex;align-items:center;margin-right:10px}
+#ts button{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;background:none;border:0;color:inherit;font-weight:700;cursor:pointer;line-height:1;padding:0}
+#ts .ts-s{font-size:13px}#ts .ts-l{font-size:20px}
+#ts button:disabled{opacity:.35;cursor:default}
+#ts button:focus-visible{outline:3px solid #ff2a3a;outline-offset:2px;border-radius:8px}
+.wv-head{flex-wrap:wrap;gap:4px}
+html,body{overflow-wrap:anywhere}
+#top>header.wv-head{font-size:14.4px;flex-wrap:nowrap}#ts{margin-right:4px}
+#top>header.wv-head,#top>header.wv-head *{white-space:nowrap;overflow-wrap:normal}#top>header.wv-head nav{gap:2px}
