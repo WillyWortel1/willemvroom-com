@@ -82,3 +82,7 @@ html.dark #top>header.wv-head #ts button{color:#fff}
 #top>header.wv-head #ts button::after{content:"";position:absolute;inset:-12px -6px}
 #top>header.wv-head .ts-sep{padding:0 4px;color:#111;font-size:14.4px}
 html.dark #top>header.wv-head .ts-sep{color:#fff}
+/* Sticky header */
+html{scroll-padding-top:calc(64px + env(safe-area-inset-top,0px))}
+#top>header.wv-head{position:sticky;top:0;z-index:60;background:var(--color-bg);padding-top:calc(10px + env(safe-area-inset-top,0px));padding-bottom:10px;box-shadow:0 0 0 100vmax var(--color-bg),0 1px 0 100vmax var(--color-line),0 6px 14px -10px rgba(0,0,0,.25);clip-path:inset(0 -100vmax -20px)}
+html.dark #top>header.wv-head{box-shadow:0 0 0 100vmax var(--color-bg),0 1px 0 100vmax var(--color-line),0 6px 14px -10px rgba(0,0,0,.7)}
