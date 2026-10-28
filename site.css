@@ -73,3 +73,12 @@ a.dl.hs-btn.solid svg{color:#fff!important}
 html,body{overflow-wrap:anywhere}
 #top>header.wv-head{font-size:14.4px;flex-wrap:nowrap}#ts{margin-right:4px}
 #top>header.wv-head,#top>header.wv-head *{white-space:nowrap;overflow-wrap:normal}#top>header.wv-head nav{gap:2px}
+#top>header.wv-head #ts{margin-right:12px;gap:0}
+#top>header.wv-head #ts button{min-width:24px;min-height:44px;padding:0 4px;color:#111;font-weight:700}
+html.dark #top>header.wv-head #ts button{color:#fff}
+#top>header.wv-head #ts .ts-s{font-size:11px}#top>header.wv-head #ts .ts-l{font-size:15px}
+#top>header.wv-head .ts-sep{padding:0 2px}
+#top>header.wv-head #ts button{min-width:0;min-height:0;padding:0 1px;position:relative;line-height:1.5}
+#top>header.wv-head #ts button::after{content:"";position:absolute;inset:-12px -6px}
+#top>header.wv-head .ts-sep{padding:0 4px;color:#111;font-size:14.4px}
+html.dark #top>header.wv-head .ts-sep{color:#fff}
