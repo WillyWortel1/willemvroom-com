@@ -15,3 +15,8 @@ In `index.html`, inside `<section id="werk">`, replace the `New work coming soon
 ```
 
 Number cards 01, 02, … in order. Remove the "coming soon" line once the first card is in. Commit and push; Pages updates in about a minute.
+
+## Pages
+- `/hooks/` — Hooks on X guide (20 hooks)
+- `/how-to-hook/` — workshop + composer (`composer.js`)
+- `/hooks-for-bots/` — AI prompts for hooks; Copy / Send-to buttons in `bots.js`
