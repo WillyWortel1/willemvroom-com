@@ -15,7 +15,7 @@ document.querySelectorAll("pre.pr").forEach(function(p){
   // Always copy too: fallback if the prefill is ignored (e.g. logged out or app intercepts the link)
   copy(s);
   var O={dots:"https://chatgpt.com/",grokbot:"https://x.ai/bot",gemini:"https://gemini.google.com/app",metaai:"https://www.meta.ai/",muse:"https://muse.ai/"};var url=T[a]?T[a]+encodeURIComponent(s):O[a];
-  var w=window.open(url,"_blank","noopener");if(!w){location.href=url;}
+  var w=window.open(url,"_blank");if(w){try{w.opener=null}catch(e){}}else{location.href=url;}
   toast(T[a]?"Opening "+N[a]+". Prompt also copied, paste it if the box is empty":"Copied, paste it in "+N[a]+(a==="dots"?" (needs ChatGPT Pro or Business Premium)":""));
  });
 });
