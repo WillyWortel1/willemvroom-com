@@ -1,0 +1,66 @@
+/* Preview: F1-stijl voor de homepage */
+:root{--font-sans:-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;--font-display:var(--font-sans);--color-bg:#f6f6f6;--color-fg:#111;--color-muted:#555;--color-subtle:#888;--color-line:#e6e6e6;--card:#fff;--accent:#d62828}
+html.dark{--color-bg:#0b0b0b;--color-fg:#eee;--color-muted:#aaa;--color-subtle:#777;--color-line:#262626;--card:#151515}
+body{font-family:var(--font-sans);font-size:15px;-webkit-font-smoothing:antialiased}
+#top>header{background:color-mix(in srgb,var(--color-bg) 88%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--color-line)}
+#top>header a[href="#top"]{font-weight:700;letter-spacing:-.01em;font-size:.95rem}
+#top>header,#inhoud>section{max-width:none}
+#inhoud>section{max-width:760px!important;padding-left:16px!important;padding-right:16px!important}
+#top>header>div{max-width:760px;padding-left:16px;padding-right:16px}
+h1{font-size:clamp(2.1rem,1.6rem + 2.4vw,3rem)!important;line-height:1.08!important;font-weight:800!important;letter-spacing:-.035em;color:var(--color-fg)}
+#inhoud>section:first-child{padding-top:44px!important;grid-template-columns:1fr!important;gap:28px!important}
+#inhoud>section:first-child>*{grid-column:auto!important}
+#inhoud>section:first-child p{font-size:1.02rem;line-height:1.6}
+#inhoud>section:first-child dl{background:var(--card);border:1px solid var(--color-line);border-radius:16px;padding:6px 18px;gap:0!important;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+#inhoud>section:first-child dl>div{border-top:1px solid var(--color-line);padding:12px 0}
+#inhoud>section:first-child dl>div:first-child{border-top:0}
+dt{font-size:.75rem!important;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.section-title{font-weight:800!important;letter-spacing:-.03em;font-size:clamp(1.6rem,1.3rem + 1.4vw,2.1rem)!important}
+#werk>div:first-child{border-bottom:0!important;padding-bottom:8px!important}
+#werk>div:last-child{display:grid;gap:12px}
+#werk article{display:grid;background:var(--card);border:1px solid var(--color-line)!important;border-radius:16px;padding:18px!important;gap:10px!important;grid-template-columns:1fr!important;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:box-shadow .2s,transform .2s}
+@media (hover:hover){#werk article:hover{box-shadow:0 6px 20px rgba(0,0,0,.08);transform:translateY(-1px)}}
+#werk article>div{grid-column:auto!important;text-align:left!important}
+#werk article>div:first-child{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:10px}
+#werk article>div:first-child p{margin:0!important}
+.werk-nr{min-width:34px;height:34px;border-radius:10px;background:var(--color-fg);color:var(--color-bg);display:flex;align-items:center;justify-content:center;font-size:.85rem!important;font-weight:700}
+#werk h3{font-size:1.3rem!important;font-weight:750!important;letter-spacing:-.015em}
+#werk article p.text-base{font-size:.95rem;margin-top:6px!important}
+#werk article a.link-line,#contact a{color:var(--accent);min-height:40px}
+#werk article a.link-line{margin-right:14px}
+.link-line{background-image:none!important;transition:opacity .2s}.link-line:hover{opacity:.7}
+#contact{padding-bottom:56px!important}
+footer{border-top:1px solid var(--color-line)}
+footer>div{max-width:760px}
+#thm{border:0;background:none;padding:0;width:36px;height:36px;margin-left:4px;color:var(--color-fg);display:inline-flex;align-items:center;justify-content:center;position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent}
+@media (hover:hover){html:not(.dark) #thm:hover{color:#d62828}}html:not(.dark) #thm:active{color:#d62828}
+#thm svg{position:absolute;transition:opacity .3s,transform .4s}
+#thm .moon{opacity:0;transform:rotate(-90deg) scale(.6)}
+html.dark #thm .sun{opacity:0;transform:rotate(90deg) scale(.6)}html.dark #thm .moon{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* Header = F1 header */
+#top>header.wv-head{display:flex;justify-content:space-between;align-items:center;max-width:760px;margin:0 auto;padding:18px 16px 8px;font-size:.9rem;border:0;background:none;-webkit-backdrop-filter:none;backdrop-filter:none;position:static}
+.wv-head .home{color:#111;font-weight:700;letter-spacing:-.01em}
+.wv-head nav{color:#111;display:flex;align-items:center;gap:4px;line-height:1.5}
+.wv-head nav a{color:#d62828;text-decoration:none;transition:opacity .2s}.wv-head nav a:hover{opacity:.7}
+.wv-head nav b{color:#111;font-weight:700}
+html.dark .wv-head .home,html.dark .wv-head nav b,html.dark .wv-head nav{color:#fff}
+
+/* Maantje altijd wit */
+html.dark #thm,html.dark #thm:hover,html.dark #thm:active,html.dark #thm:focus,html.dark #thm:focus-visible{color:#fff!important}
+
+/* Rode nummers */
+#werk .werk-nr,html.dark #werk .werk-nr{background:#d62828;color:#fff}
+
+h1 .dot{color:#d62828}
+dl.rise dt{color:#d62828!important}
+html{scroll-behavior:smooth}#werk{scroll-margin-top:8px}.to-werk{grid-column:1/-1;justify-self:center;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin-top:8px;color:#d62828;-webkit-tap-highlight-color:transparent;animation:tw 2s ease-in-out infinite}@keyframes tw{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.to-werk{animation:none}}
+.to-werk{margin-top:-16px;height:30px;width:44px}.to-werk svg{width:24px;height:24px}@keyframes tw{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+.pdfpages{margin-top:28px;display:flex;flex-direction:column;gap:12px}
+.pdfpages a{display:block}
+.pdfpages img{display:block;width:100%;height:auto;background:#fff;border:1px solid var(--color-line);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.pdf-tip{color:var(--color-subtle);font-size:.85rem;margin:0}
+a.dl,html.dark a.dl,a.dl svg{color:#d62828!important}
+a.dl.hs-btn{border-color:#d62828!important}
+a.dl.hs-btn.solid,html.dark a.dl.hs-btn.solid{background:#d62828!important;color:#fff!important}
+a.dl.hs-btn.solid svg{color:#fff!important}

@@ -1,0 +1,3 @@
+(function(){var b=document.getElementById("thm");if(!b)return;var nl=document.documentElement.lang!=="en";
+function p(){var d=document.documentElement.classList.contains("dark"),t=nl?(d?"Donker thema actief – tik voor licht":"Licht thema actief – tik voor donker"):(d?"Dark theme on – tap for light":"Light theme on – tap for dark");b.setAttribute("aria-label",t);b.title=t;var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",d?"#0b0b0b":"#f6f6f6")}
+p();b.addEventListener("click",function(){var d=document.documentElement.classList.toggle("dark");try{localStorage.setItem("wv-theme",d?"dark":"light")}catch(e){}p()})})();
