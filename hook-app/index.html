@@ -53,7 +53,7 @@
 .g input[type=text],.g select,.g textarea,.g pre.pr{width:100%;font:inherit;font-size:max(16px,1rem);padding:.7rem;border:1px solid rgba(127,127,127,.5);border-radius:10px;background:transparent;color:inherit;box-sizing:border-box}
 .g select option{color:#000}.g label{display:block;font-weight:600;margin-top:.9rem}.g label.ck,.g label.tg{font-weight:500;display:flex;gap:.6rem;align-items:flex-start;min-height:44px;align-items:center}.ck input,.tg input{width:22px;height:22px;accent-color:#ff2a3a;flex:none}
 .preview{font-weight:600;font-size:1.15rem;line-height:1.45;padding:.8rem 1rem;border-left:3px solid #ff2a3a;background:rgba(127,127,127,.08);border-radius:0 8px 8px 0;margin:.4rem 0;white-space:pre-wrap;overflow-wrap:anywhere}
-.g pre.pv,.g pre.pr{white-space:pre-wrap;overflow-wrap:anywhere;font-family:inherit;margin:.3rem 0}.g pre.pv{padding:.7rem 1rem;background:rgba(127,127,127,.08);border-radius:10px}.g pre.pr{font-size:.85rem;max-height:22rem;overflow:auto}
+.g pre.pv,.g pre.pr{white-space:pre-wrap;overflow-wrap:anywhere;font-family:inherit;margin:.3rem 0}.g pre.pv,.g textarea.pv{padding:.7rem 1rem;background:rgba(127,127,127,.08);border-radius:10px}.g textarea.pv{resize:vertical;overflow:hidden;line-height:1.5;min-height:5rem}.lb.over{color:#ff2a3a;opacity:1}.g pre.pr{font-size:.85rem;max-height:22rem;overflow:auto}
 .hint{font-size:.9rem;opacity:.8}.hint.warn,.count.over{color:#ff2a3a;opacity:1;font-weight:600}.count{font-weight:700;font-variant-numeric:tabular-nums}
 .pbtn{display:inline-flex;align-items:center;min-height:44px;padding:.5rem 1rem;border:1px solid currentColor;border-radius:999px;font-weight:600;text-decoration:none!important;margin:.5rem .6rem 0 0;background:none;color:inherit;font-size:.9rem;cursor:pointer}.pbtn.sm{min-height:40px;padding:.35rem .8rem;font-size:.85rem}.pbtn.bold{background:#ff2a3a;border-color:#ff2a3a;color:#fff!important}
 .pbtn:focus-visible,.chip:focus-visible,.hcard:focus-visible,.g input:focus-visible,.g textarea:focus-visible,.g select:focus-visible{outline:3px solid #ff2a3a;outline-offset:2px}
@@ -113,6 +113,7 @@ details.bot{margin-top:1rem;border:2px solid #ff2a3a;border-radius:14px;padding:
 
 <section class="step" id="step5" hidden><h2><span class="n">5</span>Post</h2>
 <div id="ha-out"></div>
+<p class="hint" id="ha-resplit-row" hidden><button type="button" class="pbtn sm" id="ha-resplit">Re-split from text</button></p>
 <p class="hint" id="ha-threadnote" hidden>Post 1 opens on X. Then reply to it with the other posts: copy each one below.</p>
 <p><a class="pbtn bold" id="ha-post" href="https://x.com/intent/post" target="_blank" rel="noopener">Post on X</a><button type="button" class="pbtn" id="ha-copy">Copy</button><button type="button" class="pbtn" id="ha-clear">Clear draft</button></p>
 <p class="hint">Want feedback first? Open “Write it with a bot” in step 3 and choose “Improve my post”.</p></section>
@@ -127,6 +128,6 @@ details.bot{margin-top:1rem;border:2px solid #ff2a3a;border-radius:14px;padding:
 </footer>
 </div>
 <script src="/site.js?v=20261020-n2"></script>
-<script src="/hooks-data.js?v=1"></script><script src="/hook-app/app.js?v=1"></script><script src="/hooks-for-bots/bots.js?v=3"></script>
+<script src="/hooks-data.js?v=1"></script><script src="/hook-app/app.js?v=2"></script><script src="/hooks-for-bots/bots.js?v=3"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@ var H=window.HOOKS||[],KEY="wv-hookapp",$=function(id){return document.getElemen
 var GOALS={all:"All",grow:"Grow followers",teach:"Teach",sell:"Sell",story:"Story",debate:"Debate"};
 var CTAS=["","Follow for more like this.","Reply with your take.","Bookmark this for later.","Repost if this helps someone.","custom"];
 var CHECK=[["specific","Is it specific? Concrete numbers, names or situations."],["one","One idea only? The hook makes one clear promise."],["promise","Does the body keep the promise of the hook?"]];
-var S={hook:0,vals:[],line:"",edited:false,body:"",cta:"",ctaCustom:"",thread:false,goal:"all",checks:{},ex:0,"bt-topic":"","bt-aud":"","bt-tone":"plain"};
+var S={hook:0,vals:[],line:"",edited:false,body:"",cta:"",ctaCustom:"",thread:false,goal:"all",checks:{},ex:0,ov:null,"bt-topic":"","bt-aud":"","bt-tone":"plain"};
 try{var o=JSON.parse(localStorage.getItem(KEY)||"null");if(o&&typeof o==="object")for(var k in S)if(k in o)S[k]=o[k];}catch(e){}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
@@ -23,7 +23,9 @@ function blanks(h){var r=[];h.fill.replace(/\{([^}]*)\}/g,function(m,ph){r.push(
 function filled(){var h=hook();if(!h)return"";var i=0;return h.fill.replace(/\{([^}]*)\}/g,function(m,ph){var v=(S.vals[i++]||"").trim();return v||"["+(h.labels[i-1])+"]"})}
 function hookLine(){return S.edited?S.line:filled()}
 function ctaText(){return S.cta==="custom"?S.ctaCustom.trim():S.cta}
-function full(){return[hookLine().trim(),S.body.trim(),ctaText()].filter(Boolean).join("\n\n")}
+function norm(t){return String(t).toLowerCase().replace(/\s+/g," ").replace(/\s*([.!?])\s*/g,"$1").trim()}
+function full(){var a=[hookLine().trim(),S.body.trim()].filter(Boolean),c=ctaText().trim();if(c&&norm(a.join(" ")).indexOf(norm(c).replace(/[.!?]+$/,""))<0)a.push(c);return a.join("\n\n")}
+function srcKey(){return(S.thread?"T":"S")+"|"+full()}
 function split(t){
  if(xlen(t)<=280)return[t];
  var words=t.split(/(\s+)/),out=[],cur="",lim=272;
@@ -32,7 +34,12 @@ function split(t){
  /* prefer paragraph breaks: already kept since whitespace incl. newlines is preserved */
  return out.map(function(p,i){return p+"\n\n"+(i+1)+"/"+out.length});
 }
-function posts(){var t=full();return S.thread?split(t):[t]}
+function autoPosts(){var t=full();return S.thread?split(t):[t]}
+function posts(){if(S.ov&&S.ov.src===srcKey()&&S.ov.p&&S.ov.p.length)return S.ov.p.slice();if(S.ov){S.ov=null;save()}return autoPosts()}
+function cardMeta(d,t,i,n){var l=xlen(t),lb=d.querySelector(".lb"),w=d.querySelector(".pw");lb.textContent=(n>1?"Post "+(i+1)+" of "+n:"Your post")+" \u00b7 "+l+" / 280";lb.classList.toggle("over",l>280);w.hidden=l<=280;w.textContent="Too long by "+(l-280)+". X allows 280 per post."}
+function postsChanged(){var P=posts();$("ha-post").href=intent(P[0]);$("ha-resplit-row").hidden=!S.ov;
+ $("ha-count").textContent=S.thread?P.length+" posts \u00b7 longest "+Math.max.apply(null,P.map(xlen))+" / 280":xlen(P[0])+" / 280";
+ var ov=P.some(function(t){return xlen(t)>280});$("ha-count").className="count"+(ov?" over":"");$("ha-over").hidden=S.thread||!ov}
 function intent(t){return"https://x.com/intent/post?text="+encodeURIComponent(t)}
 
 /* Step 1: pick */
@@ -56,13 +63,13 @@ function update(){var h=hook();if(!h)return;
  if(document.activeElement!==$("ha-line"))$("ha-line").value=line;
  $("ha-edited").hidden=!S.edited;
  var hl=xlen(line.trim());$("ha-hlwarn").textContent=hl>100?"Your hook line is "+hl+" characters. Only the first lines show before \u201cShow more\u201d, so keep it under about 100.":"Hook line: "+hl+" characters. Short enough to show before \u201cShow more\u201d.";$("ha-hlwarn").className="hint"+(hl>100?" warn":"");
- var P=posts(),tot=xlen(full());
- $("ha-count").textContent=S.thread?P.length+" posts \u00b7 longest "+Math.max.apply(null,P.map(xlen))+" / 280":tot+" / 280";
- $("ha-count").className="count"+(!S.thread&&tot>280?" over":"");
- $("ha-over").hidden=S.thread||tot<=280;
- var o=$("ha-out");o.innerHTML="";P.forEach(function(t,i){var d=document.createElement("div");d.className="post";d.innerHTML='<p class="lb">'+(P.length>1?"Post "+(i+1)+" of "+P.length:"Your post")+' \u00b7 '+xlen(t)+' / 280</p><pre class="pv"></pre>';d.querySelector("pre").textContent=t;
-  if(P.length>1&&i>0){var b=document.createElement("button");b.type="button";b.className="pbtn sm";b.textContent="Copy post "+(i+1);b.onclick=function(){copy(t,b)};d.appendChild(b)}o.appendChild(d)});
- $("ha-post").href=intent(P[0]);$("ha-post").textContent=P.length>1?"Post 1 on X":"Post on X";
+ var P=posts(),o=$("ha-out");
+ if(!o.contains(document.activeElement)){o.innerHTML="";P.forEach(function(t,i){var d=document.createElement("div");d.className="post";d.innerHTML='<p class="lb"></p><textarea class="pv" rows="4" spellcheck="true"></textarea><p class="hint warn pw" hidden></p>';var ta=d.querySelector("textarea");ta.value=t;ta.setAttribute("aria-label",P.length>1?"Post "+(i+1)+" of "+P.length:"Your post");
+  var fit=function(){ta.style.height="auto";ta.style.height=(ta.scrollHeight+2)+"px"};
+  ta.oninput=function(){var cur=posts();cur[i]=ta.value;S.ov={src:srcKey(),p:cur};save();cardMeta(d,ta.value,i,P.length);fit();postsChanged()};
+  cardMeta(d,t,i,P.length);
+  if(P.length>1&&i>0){var b=document.createElement("button");b.type="button";b.className="pbtn sm";b.textContent="Copy post "+(i+1);b.onclick=function(){copy(posts()[i],b)};d.appendChild(b)}o.appendChild(d);requestAnimationFrame(fit)})}
+ postsChanged();$("ha-post").textContent=P.length>1?"Post 1 on X":"Post on X";
  $("ha-threadnote").hidden=P.length<2;
  if(!botDirty)botMode(botCur,true);
  CHECK.forEach(function(c){var e=$("ck-"+c[0]);if(e)e.checked=!!S.checks[c[0]]});
@@ -85,8 +92,9 @@ function init(){
  $("ha-shuffle").onclick=function(){S.ex++;save();showEx()};
  $("ha-useex").onclick=function(){S.line=$("ha-ex").textContent;S.edited=true;save();$("ha-line").value=S.line;update()};
  var cl=$("ha-check");CHECK.forEach(function(c){var l=document.createElement("label");l.className="ck";l.innerHTML='<input type="checkbox" id="ck-'+c[0]+'"> '+esc(c[1]);cl.appendChild(l);l.querySelector("input").onchange=function(){S.checks[c[0]]=this.checked;save()}});
+ $("ha-resplit").onclick=function(){S.ov=null;save();update()};
  $("ha-copy").onclick=function(){copy(posts().join("\n\n---\n\n"),this)};
- $("ha-clear").onclick=function(){if(!confirm("Clear this draft?"))return;S.vals=[];S.line="";S.edited=false;S.body="";S.checks={};save();$("ha-body").value="";renderFill();update()};
+ $("ha-clear").onclick=function(){if(!confirm("Clear this draft?"))return;S.vals=[];S.line="";S.edited=false;S.body="";S.checks={};S.ov=null;save();$("ha-body").value="";renderFill();update()};
  var q=+(new URLSearchParams(location.search).get("hook")||0);
  if(q>=1&&q<=H.length){choose(q,false);setTimeout(function(){$("step2").scrollIntoView()},0)}else{renderFill();update()}
 }
