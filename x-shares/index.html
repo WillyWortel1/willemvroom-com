@@ -69,6 +69,9 @@
 <p><a class="pbtn bold" href="https://x.com/intent/post?text=Shares%20on%20X:%20why%20copy%20link%20is%20worth%2030×%20a%20like%20by%20%40willemvroom%20https://willemvroom.com/x-shares/" target="_blank" rel="noopener">Share on X</a><a class="pbtn" href="/x-algorithm/">X Algorithm guide</a></p>
 
 <p class="note"><strong>In one sentence:</strong> in X's published For You weights, a predicted "copy link" share is worth 20, about 30× a like (0.66). Shares are the strongest positive signals in the file.</p>
+<section class="closing" id="who"><p class="tp" style="font-size:1.6rem">"Who needs this?"</p><p>That's the whole approach: one short question at the end of a post that's genuinely useful. It doesn't beg. It just makes readers think of one specific person, and then they DM the post or copy the link, the two highest share weights in X's code (copy link 20, DM 5; like 0.66).</p>
+<p><strong>Use it when:</strong> the post is a checklist, template, tool, how-to, or a warning that saves someone time or money.</p><p><strong>Don't use it when:</strong> the post is an opinion, a joke, news, or about yourself. A question after a post nobody needs feels like bait and can earn "not interested" (−52.272) instead.</p>
+<p><a class="pbtn bold" href="/share-hooks/">Short question variants</a></p></section>
 <h2 id="weights">1. The three share types vs like and repost</h2>
 <ul class="wt pos"><li class="cap"><span>Signal (param.rs, 2026)</span><span>Weight</span></li><li><span>Share via copy link</span><span class="v">+20.0</span></li><li><span>Share via DM</span><span class="v">+5.0</span></li><li><span>Share (share menu)</span><span class="v">+2.0</span></li><li><span>Repost</span><span class="v">+1.0</span></li><li><span>Favorite (like)</span><span class="v">+0.66</span></li></ul>
 <p>Exact lines: <a href="https://github.com/xai-org/x-algorithm/blob/5ed796374ea48ee26058aab66ab10c266bea2bef/home-mixer/params/param.rs#L439-L444">ShareViaCopyLinkWeight</a>, <a href="https://github.com/xai-org/x-algorithm/blob/5ed796374ea48ee26058aab66ab10c266bea2bef/home-mixer/params/param.rs#L433-L438">ShareViaDmWeight</a>, <a href="https://github.com/xai-org/x-algorithm/blob/5ed796374ea48ee26058aab66ab10c266bea2bef/home-mixer/params/param.rs#L432-L432">ShareWeight</a>, <a href="https://github.com/xai-org/x-algorithm/blob/5ed796374ea48ee26058aab66ab10c266bea2bef/home-mixer/params/param.rs#L410-L410">RetweetWeight</a>, <a href="https://github.com/xai-org/x-algorithm/blob/5ed796374ea48ee26058aab66ab10c266bea2bef/home-mixer/params/param.rs#L396-L396">FavoriteWeight</a>. Ratios: copy link ÷ like = 20 ÷ 0.66 ≈ 30.3; DM ÷ like ≈ 7.6; share ÷ like ≈ 3.0.</p>
@@ -101,7 +104,7 @@
 <blockquote>Example (growing on X): "A 4-line reply template that gets read. Save it, then send it to someone who replies 'great post' all day."</blockquote>
 <h2 id="mistakes">6. Mistakes</h2>
 <ul><li>Asking for shares with nothing worth sharing.</li><li>"Tag 10 people" spam, which invites mutes and reports.</li><li>Hiding the value behind a link only. The post itself should be the thing worth forwarding.</li><li>Walls of text nobody can skim later.</li><li>Reading 30× as "one share = 30 likes". It's about predicted probabilities.</li></ul>
-<p><a class="pbtn bold" href="/share-hooks/">Open Share Hooks: 18 share CTAs</a></p>
+<p><a class="pbtn bold" href="/share-hooks/">Open Share Hooks: 18 question variants</a></p>
 <h2 id="faq">7. FAQ</h2>
 <dl>
 <dt>Can I see how often my posts are shared?</dt><dd>X's analytics show some share metrics. This page only covers what the code says.</dd>
