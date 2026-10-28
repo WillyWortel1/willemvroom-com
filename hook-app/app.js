@@ -4,7 +4,7 @@ var H=window.HOOKS||[],KEY="wv-hookapp",$=function(id){return document.getElemen
 var GOALS={all:"All",grow:"Grow followers",teach:"Teach",sell:"Sell",story:"Story",debate:"Debate"};
 var CTAS=["","Follow for more like this.","Reply with your take.","Bookmark this for later.","Repost if this helps someone.","custom"];
 var CHECK=[["specific","Is it specific? Concrete numbers, names or situations."],["one","One idea only? The hook makes one clear promise."],["promise","Does the body keep the promise of the hook?"]];
-var S={hook:0,vals:[],line:"",edited:false,body:"",cta:"",ctaCustom:"",thread:false,goal:"all",checks:{},ex:0,ov:null,"bt-topic":"","bt-aud":"","bt-tone":"plain"};
+var S={hook:0,vals:[],line:"",edited:false,body:"",cta:"",ctaCustom:"",thread:false,goal:"all",checks:{},ex:0,ov:null,p1url:"","bt-topic":"","bt-aud":"","bt-tone":"plain"};
 try{var o=JSON.parse(localStorage.getItem(KEY)||"null");if(o&&typeof o==="object")for(var k in S)if(k in o)S[k]=o[k];}catch(e){}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
@@ -40,7 +40,9 @@ function cardMeta(d,t,i,n){var l=xlen(t),lb=d.querySelector(".lb"),w=d.querySele
 function postsChanged(){var P=posts();$("ha-post").href=intent(P[0]);$("ha-resplit-row").hidden=!S.ov;
  $("ha-count").textContent=S.thread?P.length+" posts \u00b7 longest "+Math.max.apply(null,P.map(xlen))+" / 280":xlen(P[0])+" / 280";
  var ov=P.some(function(t){return xlen(t)>280});$("ha-count").className="count"+(ov?" over":"");$("ha-over").hidden=S.thread||!ov}
-function intent(t){return"https://x.com/intent/post?text="+encodeURIComponent(t)}
+function intent(t,rid){return"https://x.com/intent/post?text="+encodeURIComponent(t)+(rid?"&in_reply_to="+rid:"")}
+function statusId(u){var m=String(u||"").match(/(?:^|[\/.])(?:x|twitter)\.com\/(?:[^\/?#\s]+\/status(?:es)?|i(?:\/web)?\/status)\/(\d{5,25})/i);return m?m[1]:""}
+function refreshLinks(){var P=posts(),id=statusId(S.p1url);document.querySelectorAll("#ha-out .post").forEach(function(d,i){var a=d.querySelector("a.postx");if(a&&P[i]!=null)a.href=intent(P[i],i>0?id:"");var h=d.querySelector(".rhint");if(h)h.hidden=!!id});var st=$("ha-p1st");if(st){st.textContent=S.p1url.trim()?(id?"Reply mode on: posts 2+ reply to post "+id+".":"That doesn\u2019t look like a link to a post on X."):"";st.className="hint"+(S.p1url.trim()&&!id?" warn":"")}}
 
 /* Step 1: pick */
 function renderChips(){var c=$("ha-chips");c.innerHTML="";Object.keys(GOALS).forEach(function(g){var b=document.createElement("button");b.type="button";b.className="chip"+(S.goal===g?" on":"");b.textContent=GOALS[g];b.setAttribute("aria-pressed",S.goal===g);b.onclick=function(){S.goal=g;save();renderChips();renderGrid()};c.appendChild(b)})}
@@ -66,10 +68,13 @@ function update(){var h=hook();if(!h)return;
  var P=posts(),o=$("ha-out");
  if(!o.contains(document.activeElement)){o.innerHTML="";P.forEach(function(t,i){var d=document.createElement("div");d.className="post";d.innerHTML='<p class="lb"></p><textarea class="pv" rows="4" spellcheck="true"></textarea><p class="hint warn pw" hidden></p>';var ta=d.querySelector("textarea");ta.value=t;ta.setAttribute("aria-label",P.length>1?"Post "+(i+1)+" of "+P.length:"Your post");
   var fit=function(){ta.style.height="auto";ta.style.height=(ta.scrollHeight+2)+"px"};
-  ta.oninput=function(){var cur=posts();cur[i]=ta.value;S.ov={src:srcKey(),p:cur};save();cardMeta(d,ta.value,i,P.length);fit();postsChanged()};
+  ta.oninput=function(){var cur=posts();cur[i]=ta.value;S.ov={src:srcKey(),p:cur};save();cardMeta(d,ta.value,i,P.length);fit();postsChanged();refreshLinks()};
   cardMeta(d,t,i,P.length);
-  if(P.length>1&&i>0){var b=document.createElement("button");b.type="button";b.className="pbtn sm";b.textContent="Copy post "+(i+1);b.onclick=function(){copy(posts()[i],b)};d.appendChild(b)}o.appendChild(d);requestAnimationFrame(fit)})}
- postsChanged();$("ha-post").textContent=P.length>1?"Post 1 on X":"Post on X";
+  if(P.length>1){var row=document.createElement("p");row.className="prow";var a=document.createElement("a");a.className="pbtn bold postx";a.target="_blank";a.rel="noopener";a.textContent="Post "+(i+1)+" on X";var b=document.createElement("button");b.type="button";b.className="pbtn";b.textContent="Copy post "+(i+1);b.onclick=function(){copy(posts()[i],b)};row.appendChild(a);row.appendChild(b);d.appendChild(row);
+   if(i===0){var w=document.createElement("div");w.className="p1link";w.innerHTML='<label for="ha-p1url">Paste the link to your post 1 (after posting)</label><input type="url" id="ha-p1url" inputmode="url" autocomplete="off" placeholder="https://x.com/you/status/\u2026"><p class="hint" id="ha-p1st" aria-live="polite"></p>';var inp=w.querySelector("input");inp.value=S.p1url||"";inp.oninput=function(){S.p1url=inp.value;save();refreshLinks()};d.appendChild(w)}
+   else{var h=document.createElement("p");h.className="hint warn rhint";h.textContent="Paste your post 1 link first so this posts as a reply";d.appendChild(h)}}
+  o.appendChild(d);requestAnimationFrame(fit)})}
+ postsChanged();refreshLinks();$("ha-post").textContent="Post on X";$("ha-post").hidden=P.length>1;
  $("ha-threadnote").hidden=P.length<2;
  if(!botDirty)botMode(botCur,true);
  CHECK.forEach(function(c){var e=$("ck-"+c[0]);if(e)e.checked=!!S.checks[c[0]]});
@@ -94,7 +99,7 @@ function init(){
  var cl=$("ha-check");CHECK.forEach(function(c){var l=document.createElement("label");l.className="ck";l.innerHTML='<input type="checkbox" id="ck-'+c[0]+'"> '+esc(c[1]);cl.appendChild(l);l.querySelector("input").onchange=function(){S.checks[c[0]]=this.checked;save()}});
  $("ha-resplit").onclick=function(){S.ov=null;save();update()};
  $("ha-copy").onclick=function(){copy(posts().join("\n\n---\n\n"),this)};
- $("ha-clear").onclick=function(){if(!confirm("Clear this draft?"))return;S.vals=[];S.line="";S.edited=false;S.body="";S.checks={};S.ov=null;save();$("ha-body").value="";renderFill();update()};
+ $("ha-clear").onclick=function(){if(!confirm("Clear this draft?"))return;S.vals=[];S.line="";S.edited=false;S.body="";S.checks={};S.ov=null;S.p1url="";save();$("ha-body").value="";renderFill();update()};
  var q=+(new URLSearchParams(location.search).get("hook")||0);
  if(q>=1&&q<=H.length){choose(q,false);setTimeout(function(){$("step2").scrollIntoView()},0)}else{renderFill();update()}
 }
