@@ -2,6 +2,6 @@
 
 Static site for [willemvroom.com](https://willemvroom.com/).
 
-Page shells and navigation are kept. Content is cleared. Full prior site is archived on GitHub branches/tags named `archive-pre-clear-*`.
+Published `main` is a blank homepage only. Full prior site: GitHub branch/tag `archive-pre-clear-2026-11-06-2129`.
 
 GitHub Pages serves from `main`. Domain: see `CNAME`.
