@@ -1,4 +1,4 @@
-# Foilcoach · first release: prone / surf foil
+# Prone foil · first release: prone / surf foil
 
 Static, local-first video inspection app. No backend, API key, payment or video upload.
 Core modules and model assets are identical on the NL and EN sites. `index.html` chooses
@@ -10,7 +10,7 @@ to reproduce the English page. Never edit the English core independently.
 
 Two designs considered: server-side video analysis versus on-device static analysis.
 On-device was chosen for privacy, no credentials/costs, compatibility with the existing
-GitHub Pages sites. Browser handles decoding; MediaPipe handles pose detection; pure
+GitHub Pages sites. Browser handles decoding; independent IMAGE inference avoids temporal tracker history across retries; MediaPipe handles pose detection; pure
 `analysis.mjs` owns confidence, angles and checkpoint selection; `app.mjs` owns one
 session, cancellable generation tokens and the UI. Old jobs cannot write to new sessions.
 No library controls the DOM and no third-party service receives user media.
@@ -67,3 +67,28 @@ the WASM/browser pipeline or foil-specific tracking. No claim of foil-coaching v
 5. Blank video -> no visible rider; moving view -> no knee angles. Paddling -> no knee angles.
 6. Invalid file / unsupported codec -> useful error; block model -> manual mode, no fake AI.
 7. Check NL/EN text, keyboard, 390px/1280px layout and dark mode.
+
+## Revision 2: complete prone review
+
+- User-selected rider ROI: pointer drag or accessible percentage bounds. Coordinates
+  remap from cropped model input to the full original video; resolution is not invented.
+- Partial skeletons without an acceptable torso are suppressed, including thumbnails.
+- Independent IMAGE inference on a canvas sample removes cross-run temporal tracking
+  state. Native repeated-pixel test: 3 runs × 4 frames, maximum landmark delta 0.
+  Browser repeatability still requires checking; prior browser VIDEO runs differed.
+- Re-upload clears time, ROI, results, rider review/stance/direction, camera view and speed.
+- Optional 2D torso/elbow/hip/nose relationships use only supported views/visible points.
+  They do not infer gaze, foot pressure, foil geometry or height above water.
+- Six-stage rider-confirmed review covers water, wave, start, feet, loading, hips,
+  torso, arms/hands, head, flight, pumping and energy. Selected priorities may link
+  to actual editable checkpoints. Personal plans are explicitly user-confirmed,
+  not automatic technique diagnoses.
+- Full Josh Ku reference review is organized in a collapsible bilingual library.
+  Equipment preferences and advanced ideas are separated from beginner practice.
+- URL remains /foilcoach/ on both sites; exact visible name is Prone foil.
+- Josh Ku source contains a large presenter and distant surfer. It is NOT training
+  data or proof of valid on-water pose measurement. Native full-frame crop: 41 poses,
+  zero accepted torso/knee samples. Cropping removes competing people, not lost detail.
+
+Tests: `node --test foilcoach/*.test.mjs`. Final browser QA must cover the new ROI,
+manual review/plan/export, suppressed wrong-person skeleton, repeatability and mobile.

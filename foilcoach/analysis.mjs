@@ -21,3 +21,18 @@ export function measure(p,w,h,view) {
 export function nearest(frames,time,maxGap=.22){let best=null;for(const f of frames)if(!best||Math.abs(f.t-time)<Math.abs(best.t-time))best=f;return best&&Math.abs(best.t-time)<=maxGap?best:null;}
 export function checkpoints(frames){const good=frames.filter(f=>f.metrics.visible);if(!good.length)return [];return [0,1/3,2/3,1].map(q=>good[Math.round((good.length-1)*q)]);}
 export function summary(frames){const good=frames.filter(f=>f.metrics.visible);const knees=good.filter(f=>f.metrics.knee!==null);return {total:frames.length,good:good.length,coverage:frames.length?Math.round(good.length/frames.length*100):0,knees,kneeRange:knees.length>=3?Math.max(...knees.map(f=>f.metrics.knee))-Math.min(...knees.map(f=>f.metrics.knee)):null};}
+export function bodyObservations(p,w,h,view,direction='unknown') {
+ const out={torso:null,elbow:null,hipOffset:null,headOffset:null};
+ if(view!=='side'||!p)return out;
+ const sides=[[11,23,13,15],[12,24,14,16]].filter(ids=>visible(p,ids.slice(0,2))).sort((a,b)=>Math.min(...b.slice(0,2).map(i=>p[i].visibility))-Math.min(...a.slice(0,2).map(i=>p[i].visibility)));
+ if(!sides.length)return out;
+ const [s,hip,elbow,wrist]=sides[0];const torso=Math.hypot((p[s].x-p[hip].x)*w,(p[s].y-p[hip].y)*h);
+ if(torso<12)return out; // Too few source pixels to normalize a body relationship.
+ out.torso=Math.atan2((p[s].x-p[hip].x)*w,(p[hip].y-p[s].y)*h)*180/Math.PI;
+ if(visible(p,[s,elbow,wrist]))out.elbow=angle(p[s],p[elbow],p[wrist],w,h);
+ if(direction==='unknown')return out;
+ const sign=direction==='left'?-1:1;
+ if(visible(p,[23,24,27,28]))out.hipOffset=sign*((p[23].x+p[24].x-p[27].x-p[28].x)/2)*w/torso;
+ if(visible(p,[0,s]))out.headOffset=sign*(p[0].x-p[s].x)*w/torso;
+ return out;
+}
