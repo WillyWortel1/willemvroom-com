@@ -6,11 +6,13 @@ export function angle(a,b,c,w,h) {
  const d=Math.hypot(...u)*Math.hypot(...v); return d<1 ? null : Math.acos(Math.max(-1,Math.min(1,(u[0]*v[0]+u[1]*v[1])/d)))*180/Math.PI;
 }
 export function measure(p,w,h,view) {
- const valid=visible(p,[11,12,23,24]);
+ const torsoSides=[[11,23],[12,24]].filter(ids=>visible(p,ids));
+ const valid=torsoSides.length>0;
  const r={visible:valid, knee:null,side:null,hip:null,torso:null};
  if(!valid) return r;
- r.hip=((p[23].y+p[24].y)/2)*h;
- r.torso=Math.hypot(((p[11].x+p[12].x-p[23].x-p[24].x)/2)*w,((p[11].y+p[12].y-p[23].y-p[24].y)/2)*h);
+ const [shoulder,hip]=torsoSides.sort((a,b)=>Math.min(...b.map(i=>p[i].visibility))-Math.min(...a.map(i=>p[i].visibility)))[0];
+ r.hip=p[hip].y*h;
+ r.torso=Math.hypot((p[shoulder].x-p[hip].x)*w,(p[shoulder].y-p[hip].y)*h);
  if(view!=='side') return r;
  const sides=[[23,25,27],[24,26,28]].filter(ids=>visible(p,ids));
  if(sides.length){const ids=sides.sort((a,b)=> Math.min(...b.map(i=>p[i].visibility))-Math.min(...a.map(i=>p[i].visibility)))[0];r.knee=angle(...ids.map(i=>p[i]),w,h);r.side=ids[0]===23?'left':'right';}
