@@ -54,7 +54,7 @@ H=f'''<!DOCTYPE html>
 <link rel="stylesheet" href="/site.css?v=20261028-sticky">
 <meta property="og:type" content="article"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://willemvroom.com/news/"><meta property="og:title" content="{t}"><meta property="og:description" content="{desc}">
 <script>(function(){{try{{var t=localStorage.getItem("wv-theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches)){{document.documentElement.classList.add("dark");var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#0b0b0b");}}}}catch(e){{}}}})();</script>
-<style>.nw-w{{max-width:42rem}}.nw-m{{margin-top:2.5rem}}.nw-w p+p{{margin-top:1.1em}}.text-lg{{line-height:1.65}}figure.nw-m{{max-width:56rem}}.nw-f img{{display:block;width:100%;height:auto;border-radius:16px}}figcaption a{{color:inherit;text-decoration:underline}}.nw-src a{{color:var(--accent)}}.nw-src{{font-size:.875rem;word-break:break-word}}.nw-src li{{margin:.35rem 0}}.nw-ls{{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem}}.nw-ls[hidden]{{display:none}}.nw-ls button{{min-height:44px;padding:0 1.1rem;border:1px solid currentColor;border-radius:999px;background:none;color:var(--accent);font-weight:600;font-size:.875rem;cursor:pointer}}.nw-ls button:disabled{{opacity:.4;cursor:default}}.nw-ls button:focus-visible{{outline:3px solid #ff2a3a;outline-offset:2px}}</style>
+<style>.nw-w{{max-width:42rem}}.nw-m{{margin-top:2.5rem}}.nw-w p+p{{margin-top:1.1em}}.text-lg{{line-height:1.65}}figure.nw-m{{max-width:56rem}}.nw-f img{{display:block;width:100%;height:auto;border-radius:16px}}figcaption a{{color:inherit;text-decoration:underline}}.nw-src a{{color:var(--accent)}}.nw-src{{font-size:.875rem;word-break:break-word}}.nw-src li{{margin:.35rem 0}}.nw-ls{{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem}}.nw-ls[hidden]{{display:none}}.nw-ls button{{min-height:44px;padding:0 1.1rem;border:1px solid currentColor;border-radius:999px;background:none;color:var(--accent);font-weight:600;font-size:.875rem;cursor:pointer}}.nw-ls button:disabled{{opacity:.4;cursor:default}}.nw-ls input[type=range]{{flex:1 1 10rem;min-width:8rem;accent-color:var(--accent)}}.nw-ls button:focus-visible{{outline:3px solid #ff2a3a;outline-offset:2px}}</style>
 </head>
 <body>
 <div id="top" class="bg-bg text-fg">
@@ -65,7 +65,7 @@ H=f'''<!DOCTYPE html>
 <main id="inhoud"><article class="mx-auto max-w-6xl px-5 pt-16 pb-20 sm:px-8 sm:pt-24 sm:pb-28">
 <p class="text-sm text-subtle">News · <time datetime="{o.date}">{ds}</time></p>
 <h1 class="section-title nw-w mt-3">{t}</h1>
-<div id="listen" class="nw-w mt-4 nw-ls" role="group" aria-label="Read article aloud" hidden><button type="button" data-a="play" aria-pressed="false">Listen</button><button type="button" data-a="stop" disabled>Stop</button><span data-s role="status" aria-live="polite" class="text-sm text-subtle"></span></div>
+<div id="listen" class="nw-w mt-4 nw-ls" role="group" aria-label="Read article aloud" hidden><audio preload="none" src="/news/listen.mp3"></audio><button type="button" data-a="play" aria-pressed="false">Listen</button><button type="button" data-a="stop" disabled>Stop</button><input type="range" data-a="seek" min="0" max="0" step="1" value="0" aria-label="Position in the audio"><span data-s role="status" aria-live="off" class="text-sm text-subtle"></span></div>
 <div class="nw-w nw-m text-lg text-fg nw-body">{body}</div>
 <div class="nw-w border-t border-line pt-4 nw-m"><h2 class="font-display text-2xl leading-tight font-medium tracking-tight">Sources</h2><ul class="nw-src mt-4">{src}</ul></div>
 <p class="nw-m"><a class="link-line press inline-flex min-h-11 items-center text-sm font-medium" href="/">← Back to willemvroom.com</a></p>
@@ -78,7 +78,7 @@ H=f'''<!DOCTYPE html>
 </footer>
 </div>
 <script src="/site.js?v=20261020-n2"></script>
-<script src="/news/listen.js?v=1"></script>
+<script src="/news/listen.js?v=2"></script>
 </body>
 </html>
 '''
@@ -86,5 +86,7 @@ got=re.findall(r'<li><a href="([^"]+)"',re.search(r'<ul class="nw-src mt-4">(.*?
 if got!=[e(u) for _,u in S]: sys.exit('SOURCES CHECK FAILED')
 if re.search(r'<video|\.mp4|<track|\.vtt',H): sys.exit('VIDEO CHECK FAILED')
 if re.search(r'\b(Krakau|het|een|niet|Bronnen)\b',re.sub(r'<a [^>]*>|https?://\S+','',H)): sys.exit('LANGUAGE CHECK FAILED')
+if '/news/listen.mp3' not in H or 'speechSynthesis' in H: sys.exit('AUDIO CHECK FAILED')
+if not os.path.isfile(os.path.join(d,'listen.mp3')): sys.exit('AUDIO FILE MISSING: '+'listen.mp3')
 if 'id="listen"' not in H or 'listen.js' not in H: sys.exit('LISTEN CHECK FAILED')
 open(os.path.join(d,'index.html'),'w',encoding='utf-8').write(H);print('ok sources',len(got),'images',n)
