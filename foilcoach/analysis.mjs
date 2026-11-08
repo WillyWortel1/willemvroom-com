@@ -19,7 +19,7 @@ export function measure(p,w,h,view) {
  return r;
 }
 export function nearest(frames,time,maxGap=.22){let best=null;for(const f of frames)if(!best||Math.abs(f.t-time)<Math.abs(best.t-time))best=f;return best&&Math.abs(best.t-time)<=maxGap?best:null;}
-export function checkpoints(frames){const good=frames.filter(f=>f.metrics.visible);if(!good.length)return [];return [0,1/3,2/3,1].map(q=>good[Math.round((good.length-1)*q)]);}
+export function checkpoints(frames){const good=[...new Map(frames.filter(f=>f.metrics.visible).map(f=>[f.t.toFixed(3),f])).values()].sort((a,b)=>a.t-b.t);if(good.length<4)return [];return [0,1/3,2/3,1].map(q=>good[Math.round((good.length-1)*q)]);}
 export function summary(frames){const good=frames.filter(f=>f.metrics.visible);const knees=good.filter(f=>f.metrics.knee!==null);return {total:frames.length,good:good.length,coverage:frames.length?Math.round(good.length/frames.length*100):0,knees,kneeRange:knees.length>=3?Math.max(...knees.map(f=>f.metrics.knee))-Math.min(...knees.map(f=>f.metrics.knee)):null};}
 export function bodyObservations(p,w,h,view,direction='unknown') {
  const out={torso:null,elbow:null,hipOffset:null,headOffset:null};
@@ -36,3 +36,5 @@ export function bodyObservations(p,w,h,view,direction='unknown') {
  if(visible(p,[0,s]))out.headOffset=sign*(p[0].x-p[s].x)*w/torso;
  return out;
 }
+
+export function sampleEvidence(frames){const good=frames.filter(f=>f.metrics.visible);return {total:frames.length,torso:good.length,kneeBySide:Object.fromEntries(['left','right'].map(side=>[side,good.filter(f=>f.metrics.side===side&&Number.isFinite(f.metrics.knee)).length])),body:Object.fromEntries(['torso','elbow','hipOffset','headOffset'].map(key=>[key,good.filter(f=>Number.isFinite(f.body?.[key])).length]))};}

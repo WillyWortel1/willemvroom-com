@@ -92,3 +92,26 @@ the WASM/browser pipeline or foil-specific tracking. No claim of foil-coaching v
 
 Tests: `node --test foilcoach/*.test.mjs`. Final browser QA must cover the new ROI,
 manual review/plan/export, suppressed wrong-person skeleton, repeatability and mobile.
+
+## Final QA refinements
+
+- Automatic suggestions require four distinct reliable timestamps. Sparse observations
+  do not duplicate one timestamp into four purported manoeuvre phases. Manual moments
+  remain independently placeable.
+- Summary ranges cover all sampled frames, not only four checkpoints. Metric-specific
+  sample counts are displayed and exported; a missing checkpoint value is not a claim
+  that the entire passage was unmeasurable.
+- JSON includes the actual generated plan, localized rendered text, action/source,
+  confirmed priority, linked evidence and provenance; manual-only export is tested.
+- Tight ROI guidance explicitly asks for generous full-body, hand and foot margins.
+- Available prone QA exports used different vertical ROI bounds (NL y=.12514,h=.52607;
+  EN y=.06242,h=.68794). Their 1/42 vs 0/42 accepted-frame result is not an identical-input
+  determinism comparison. Full-frame golf exports were identical across repeated NL/EN runs.
+- Static responsive audit: min-width:0 on nested grid/flex content, wrapping long
+  measurement/plan text, 700px single-column breakpoint, contained horizontally
+  scrollable tabs, 44px controls. Actual 390px browser testing has NOT been performed.
+
+DOM regression test (jsdom dev dependency, not used by the app):
+`JSDOM_MODULE=/absolute/path/to/jsdom/lib/api.js node tools/test-foilcoach-dom.mjs`
+Tests both localizations, plan evidence/provenance, review reset, actual app initialization
+         and manual-only JSON export containing the generated plan.
