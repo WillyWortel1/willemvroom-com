@@ -3,10 +3,13 @@ var S=[87.5,100,112.5,125,137.5,150],K="wv-textsize",d=document.documentElement;
 function get(){try{var v=parseFloat(localStorage.getItem(K));return S.indexOf(v)>-1?v:100}catch(e){return 100}}
 function set(v){d.style.fontSize=v===100?"":v+"%";try{v===100?localStorage.removeItem(K):localStorage.setItem(K,v)}catch(e){}}
 set(get());
-function ui(){var nav=document.querySelector(".wv-head nav");if(!nav||document.getElementById("ts"))return;
- var w=document.createElement("span");w.id="ts";w.setAttribute("role","group");w.setAttribute("aria-label","Text size");
+function ui(){var nav=document.querySelector(".wv-head nav");if(!nav)return;
+ // The control is normally already in the HTML (no layout shift); only build it when a page lacks it.
+ var w=document.getElementById("ts");if(w&&w.dataset.ready)return;
+ if(!w){w=document.createElement("span");w.id="ts";w.setAttribute("role","group");w.setAttribute("aria-label","Text size");
  w.innerHTML='<button type="button" data-d="-1" aria-label="Smaller text" class="ts-s">A</button><span class="ts-sep" aria-hidden="true">|</span><button type="button" data-d="1" aria-label="Larger text" class="ts-l">A</button>';
- var wm=nav.querySelector(".wv-more");nav.insertBefore(w,wm?wm.nextSibling:nav.firstChild);
+ var wm=nav.querySelector(".wv-more");nav.insertBefore(w,wm?wm.nextSibling:nav.firstChild);}
+ w.dataset.ready="1";
  function upd(){var i=S.indexOf(get());w.children[0].disabled=i<=0;w.children[2].disabled=i>=S.length-1;}
  w.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var i=S.indexOf(get())+ +b.getAttribute("data-d");if(i<0||i>=S.length)return;set(S[i]);upd();});
  upd();}

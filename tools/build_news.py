@@ -32,10 +32,15 @@ for x in paras:
     for pre,s_,dst,w,h,alt,cap in FIGS:
         if x.startswith(pre):
             n+=1;shutil.copy(os.path.join(o.assets,s_),os.path.join(d,dst))
-            out.append(f'</div><figure class="nw-m nw-f"><img src="/news/{dst}" width="{w}" height="{h}" loading="lazy" decoding="async" alt="{e(alt)}"><figcaption class="mt-2 text-sm text-subtle">{cap}</figcaption></figure><div class="nw-w nw-m text-lg text-fg nw-body">')
+            # First image is usually the LCP element on mobile: load it eagerly with high priority.
+            load='fetchpriority="high"' if n==1 else 'loading="lazy"'
+            out.append(f'</div><figure class="nw-m nw-f"><img src="/news/{dst}" width="{w}" height="{h}" {load} decoding="async" alt="{e(alt)}"><figcaption class="mt-2 text-sm text-subtle">{cap}</figcaption></figure><div class="nw-w nw-m text-lg text-fg nw-body">')
     out.append(f'<p>{e(x)}</p>')
 if n!=len(FIGS): sys.exit(f'IMAGE CHECK FAILED: {n} of {len(FIGS)}')
-body=''.join(out);desc=e(paras[0][:155])
+body=''.join(out)
+# Meta description: cut at a word boundary (max 155 chars) instead of mid-word.
+clip=lambda s,n=155: s if len(s)<=n else s[:n].rsplit(' ',1)[0].rstrip(',;:')+'…'
+desc=e(clip(paras[0]))
 moon='<button id="thm" type="button" aria-label="Toggle theme"><svg class="moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>'
 H=f'''<!DOCTYPE html>
 <html lang="en-US" class="antialiased">
@@ -46,13 +51,12 @@ H=f'''<!DOCTYPE html>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="https://willemvroom.com/news/">
 <link rel="alternate" hreflang="nl" href="https://willemvroom.nl/nieuws/"><link rel="alternate" hreflang="en" href="https://willemvroom.com/news/">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#f6f6f6">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="preload" href="/fonts/ibm-plex-sans-latin-wght-normal-IvpUvPa2.woff2" as="font" type="font/woff2" crossorigin>
-<script src="/textsize.js?v=3"></script>
+<script src="/textsize.js?v=4"></script>
 <link rel="stylesheet" href="/styles.css?v=20261018">
-<link rel="stylesheet" href="/site.css?v=20261028-sticky">
-<meta property="og:type" content="article"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://willemvroom.com/news/"><meta property="og:title" content="{t}"><meta property="og:description" content="{desc}">
+<link rel="stylesheet" href="/site.css?v=20261115-a11y">
+<meta property="og:type" content="article"><meta property="og:locale" content="en_US"><meta property="og:site_name" content="Willem Vroom"><meta property="og:url" content="https://willemvroom.com/news/"><meta property="og:title" content="{t}"><meta property="og:description" content="{desc}"><meta name="twitter:card" content="summary">
 <script>(function(){{try{{var t=localStorage.getItem("wv-theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches)){{document.documentElement.classList.add("dark");var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#0b0b0b");}}}}catch(e){{}}}})();</script>
 <style>.nw-w{{max-width:42rem}}.nw-m{{margin-top:2.5rem}}.nw-w p+p{{margin-top:1.1em}}.text-lg{{line-height:1.65}}figure.nw-m{{max-width:56rem}}.nw-f img{{display:block;width:100%;height:auto;border-radius:16px}}figcaption a{{color:inherit;text-decoration:underline}}.nw-src a{{color:var(--accent)}}.nw-src{{font-size:.875rem;word-break:break-word}}.nw-src li{{margin:.35rem 0}}.nw-ls{{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem}}.nw-ls[hidden]{{display:none}}.nw-ls button{{min-height:44px;padding:0 1.1rem;border:1px solid currentColor;border-radius:999px;background:none;color:var(--accent);font-weight:600;font-size:.875rem;cursor:pointer}}.nw-ls button:disabled{{opacity:.4;cursor:default}}.nw-ls input[type=range]{{flex:1 1 10rem;min-width:8rem;accent-color:var(--accent)}}.nw-ls button:focus-visible{{outline:3px solid #ff2a3a;outline-offset:2px}}</style>
 </head>
@@ -60,7 +64,7 @@ H=f'''<!DOCTYPE html>
 <div id="top" class="bg-bg text-fg">
 <a class="skip" href="#inhoud">Skip to content</a>
 <header class="wv-head"><a href="/" class="home">willemvroom.com</a><nav>
-{moon}
+<span id="ts" role="group" aria-label="Text size"><button type="button" data-d="-1" aria-label="Smaller text" class="ts-s">A</button><span class="ts-sep" aria-hidden="true">|</span><button type="button" data-d="1" aria-label="Larger text" class="ts-l">A</button></span>{moon}
 </nav></header>
 <main id="inhoud"><article class="mx-auto max-w-6xl px-5 pt-16 pb-20 sm:px-8 sm:pt-24 sm:pb-28">
 <p class="text-sm text-subtle">News · <time datetime="{o.date}">{ds}</time></p>
