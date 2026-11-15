@@ -54,7 +54,7 @@ H=f'''<!DOCTYPE html>
 <meta name="theme-color" content="#f6f6f6">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <script src="/textsize.js?v=4"></script>
-<link rel="stylesheet" href="/styles.css?v=20261018">
+<link rel="stylesheet" href="/styles.css?v=20261115-nofonts">
 <link rel="stylesheet" href="/site.css?v=20261115-a11y">
 <meta property="og:type" content="article"><meta property="og:locale" content="en_US"><meta property="og:site_name" content="Willem Vroom"><meta property="og:url" content="https://willemvroom.com/news/"><meta property="og:title" content="{t}"><meta property="og:description" content="{desc}"><meta name="twitter:card" content="summary">
 <script>(function(){{try{{var t=localStorage.getItem("wv-theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches)){{document.documentElement.classList.add("dark");var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#0b0b0b");}}}}catch(e){{}}}})();</script>
