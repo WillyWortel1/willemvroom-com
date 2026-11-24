@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en-US" class="antialiased">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>4-7-8 breathing · for the night</title>
+<meta name="description" content="A calm 4-7-8 breathing exercise for the evening: breathe in for 4 counts, hold for 7, breathe out for 8.">
+<meta name="theme-color" content="#0b1026">
+<link rel="canonical" href="https://willemvroom.com/breathing/">
+<link rel="alternate" hreflang="nl" href="https://willemvroom.nl/ademhaling/">
+<link rel="alternate" hreflang="en" href="https://willemvroom.com/breathing/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/styles.css?v=20261115-nofonts"><script src="/textsize.js?v=4"></script>
+<link rel="stylesheet" href="/site.css?v=20261115-a11y">
+<script>(function(){try{var t=localStorage.getItem("wv-theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches)){document.documentElement.classList.add("dark");var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#0b0b0b");}}catch(e){}})();</script>
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Willem Vroom">
+<meta property="og:url" content="https://willemvroom.com/breathing/">
+<meta property="og:title" content="4-7-8 breathing">
+<meta property="og:description" content="A calm 4-7-8 breathing exercise for the evening.">
+<meta name="twitter:card" content="summary">
+<style>
+:root{
+  --night:#0b1026; --ink:#f6efe1; --muted:#cdbfa6; --gold:#e2c58f; --gold-2:#f3dfb4; --rose:#e7a38f;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --breath:0; --lean:0;
+  color-scheme:dark;
+}
+#top.ad-top{position:relative;isolation:isolate;background:#1c1e42;overflow-x:clip}
+#top.ad-top>header.wv-head{position:relative!important;z-index:4;background:none!important;box-shadow:none!important;clip-path:none}
+.ad-top>header.wv-head .home,.ad-top>header.wv-head nav,.ad-top>header.wv-head nav b,.ad-top #ts button,.ad-top #ts .ts-sep{color:#f6efe1!important}
+.ad-top>header.wv-head nav a{color:var(--gold-2)!important}
+.ad-top>header.wv-head :focus-visible{outline-color:var(--gold-2)}
+#zee{position:absolute;top:0;left:0;width:100%;height:100svh;display:block;z-index:0}
+.ad-main{position:relative;z-index:3}
+.hero{isolation:isolate;position:relative;overflow:hidden;font-family:var(--sans);color:var(--ink);line-height:1.6;min-height:calc(100svh - 56px);display:grid;grid-template-rows:auto 1fr auto;justify-items:center;padding:16px 20px 0;text-align:center}
+.eyebrow{font-size:.68rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin:0 0 .5rem}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.3rem,9vw,3.6rem);line-height:1.05;margin:0;letter-spacing:.01em;
+  background:linear-gradient(180deg,var(--gold-2),var(--gold) 60%,#b8925a);-webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 40px rgba(226,197,143,.18)}
+.ratio{margin:.55rem 0 0;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.ratio span{color:var(--gold-2)}
+.stage{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:100%;padding-top:8px}
+.guide{position:relative;width:min(78vw,340px);aspect-ratio:1}
+.guide svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.enso{filter:drop-shadow(0 0 8px rgba(243,214,160,.35))}
+.glowring{position:absolute;inset:6%;border-radius:50%;pointer-events:none;box-shadow:0 0 30px 4px rgba(243,214,160,.55),inset 0 0 26px 2px rgba(243,214,160,.3);opacity:calc(var(--breath)*.9)}
+.disc{transform-box:fill-box;transform-origin:50% 50%;scale:calc(.62 + var(--breath)*.38);opacity:calc(.35 + var(--breath)*.65);@media (prefers-reduced-motion:reduce){scale:1}}
+.halo{position:absolute;inset:4%;border-radius:50%;background:radial-gradient(circle,rgba(243,223,180,.20),rgba(243,223,180,0) 68%);
+  scale:calc(.75 + var(--breath)*.45);opacity:calc(.5 + var(--breath)*.5);pointer-events:none}
+.readout{position:relative;isolation:isolate;padding:4px 28px 2px}
+.readout::before{content:"";position:absolute;inset:-30px -60px;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(11,16,38,.38),rgba(11,16,38,0))}
+.phase{font-family:var(--serif);font-size:clamp(2.2rem,10vw,3rem);font-weight:500;margin:6px 0 0;line-height:1;min-height:1em;color:var(--ink);
+  text-shadow:0 2px 24px rgba(11,16,38,.6)}
+.count{font-family:var(--serif);font-size:2.1rem;line-height:1.1;color:var(--gold);min-height:1.1em;margin:4px 0 0;font-variant-numeric:lining-nums tabular-nums}
+.hint{margin:2px 0 0;color:var(--muted);font-size:.95rem;min-height:1.6em;text-shadow:0 1px 12px rgba(11,16,38,.8)}
+.controls{display:flex;align-items:center;gap:14px;margin:14px 0 0;flex-wrap:wrap;justify-content:center}
+.btn{font:inherit;font-size:.82rem;letter-spacing:.24em;text-transform:uppercase;color:#1a1408;cursor:pointer;
+  background:linear-gradient(180deg,var(--gold-2),var(--gold));border:0;border-radius:999px;padding:14px 30px;min-width:150px;
+  box-shadow:0 0 0 1px rgba(255,240,210,.5) inset,0 10px 30px -10px rgba(226,197,143,.6);transition:box-shadow .3s,background-color .3s}
+.btn:hover{box-shadow:0 0 0 1px rgba(255,240,210,.8) inset,0 10px 36px -8px rgba(226,197,143,.85)}
+.btn.ghost{background:rgba(11,16,38,.55);color:var(--ink);box-shadow:0 0 0 1px rgba(226,197,143,.45) inset;min-width:0;padding:14px 20px}
+.hero :focus-visible{outline:2px solid var(--gold-2);outline-offset:4px}
+.rounds{display:flex;align-items:center;gap:8px;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.rounds select{font:inherit;letter-spacing:.05em;color:var(--ink);background:#151a38;border:1px solid rgba(226,197,143,.45);border-radius:999px;padding:8px 12px}
+.sound{display:flex;flex-direction:column;align-items:center;gap:6px;margin:12px 0 0}
+.seg{display:inline-flex;flex-wrap:wrap;justify-content:center;padding:3px;border-radius:999px;background:rgba(11,16,38,.62);box-shadow:0 0 0 1px rgba(226,197,143,.4) inset}
+.seg button{font:inherit;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:transparent;border:0;border-radius:999px;padding:9px 11px;cursor:pointer;min-height:36px;transition:background-color .3s,color .3s,box-shadow .3s}
+.seg button:hover{color:var(--gold-2)}
+.seg button[aria-pressed="true"]{background:linear-gradient(180deg,var(--gold-2),var(--gold));color:#1a1408;box-shadow:0 0 16px -4px rgba(243,223,180,.7)}
+.vol{appearance:none;-webkit-appearance:none;width:120px;height:24px;background:transparent;cursor:pointer}
+.vol::-webkit-slider-runnable-track{height:2px;background:linear-gradient(90deg,var(--gold) var(--v,50%),rgba(226,197,143,.3) var(--v,50%));border-radius:2px}
+.vol::-moz-range-track{height:2px;background:rgba(226,197,143,.3);border-radius:2px}
+.vol::-moz-range-progress{height:2px;background:var(--gold)}
+.vol::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;margin-top:-6px;border-radius:50%;background:var(--gold-2);box-shadow:0 0 10px rgba(243,223,180,.6)}
+.vol::-moz-range-thumb{width:14px;height:14px;border:0;border-radius:50%;background:var(--gold-2)}
+.vol:disabled{opacity:.45;cursor:default}
+.progress{margin:10px 0 0;font-size:.75rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);min-height:1.6em}
+.dots{display:inline-flex;gap:7px;vertical-align:middle;margin-left:8px}
+.dots i{width:7px;height:7px;border-radius:50%;border:1px solid var(--gold);display:block}
+.dots i.done{background:var(--gold);box-shadow:0 0 8px var(--gold)}
+.fire{position:relative;width:min(80vw,340px);aspect-ratio:360/160;contain:layout paint;overflow:visible}
+.fire>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.fire>i{position:absolute;display:block;pointer-events:none}
+.fglow{left:1%;top:-7.5%;width:98%;height:97.5%;border-radius:50%;background:radial-gradient(closest-side at 50% 55%,rgba(255,184,98,.5),rgba(255,138,61,.16) 45%,rgba(255,138,61,0))}
+.refl{left:23%;top:83.75%;width:54%;height:15%;border-radius:50%;background:radial-gradient(farthest-side at 50% 0,rgba(255,154,74,.26),rgba(255,154,74,.08) 60%,rgba(255,154,74,0))}
+.fire .flames{position:absolute;left:30%;top:-2.5%;width:40%;height:65%;transform-origin:50% 95%;rotate:calc(var(--lean)*-5deg)}
+.fire .fl{position:absolute;inset:0;width:100%;height:100%;transform-origin:50% 92%}
+.fire .f1{opacity:.85}.fire .f4{opacity:.8}
+.sp{width:2px;height:2px;border-radius:50%;background:#ffd28a;opacity:0}
+.s1{left:47%;top:24%}.s2{left:53%;top:18%;--dx:6px}.s3{left:50.3%;top:29.5%;--dx:-5px}
+@media (prefers-reduced-motion:no-preference){
+  .fire .flames{transition:rotate 1.2s ease-in-out}
+  .fire .fl{animation:lick 2.4s ease-in-out infinite}
+  .fire .f2{animation-duration:3.1s;animation-delay:-1.3s}
+  .fire .f3{animation-duration:2s;animation-delay:-.7s}
+  .fire .f4{animation-duration:1.7s;animation-delay:-.4s}
+  .fglow{animation:fglow 3.2s ease-in-out infinite}
+  .refl{animation:fglow 2.6s ease-in-out -1s infinite}
+  .sp{animation:rise 4.5s ease-out infinite}
+  .s2{animation-delay:-1.6s;animation-duration:5.2s}
+  .s3{animation-delay:-3.1s;animation-duration:3.9s}
+  .uit-beeld .fire *,.uit-beeld .halo{animation-play-state:paused}
+}
+@keyframes lick{0%,100%{scale:1 1;translate:0 0}22%{scale:.95 1.06;translate:-.6px 0}48%{scale:1.04 .95;translate:.4px 0}74%{scale:.97 1.04;translate:.8px 0}}
+@keyframes fglow{0%,100%{opacity:.82}50%{opacity:1}}
+@keyframes rise{0%{translate:0 0;opacity:0}15%{opacity:.8}100%{translate:var(--dx,2px) -44px;opacity:0}}
+.scroll{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:10px 0 max(18px,env(safe-area-inset-bottom))}
+/* info: site look */
+.info{position:relative;z-index:3}
+.info .steps{list-style:none;padding:0;margin:1rem 0 0;counter-reset:s}
+.info .steps li{counter-increment:s;position:relative;padding:0 0 1rem 2.75rem}
+.info .steps li::before{content:counter(s);position:absolute;left:0;top:-.1rem;width:2rem;height:2rem;border-radius:50%;border:1px solid currentColor;display:grid;place-items:center;font-weight:600;font-size:.95rem}
+.info sup a{text-decoration:none;padding:0 1px}
+.info .note{border:1px solid var(--accent,#d62828);border-radius:16px;padding:14px 16px;margin-top:2rem}
+.info .src li{margin:.35rem 0;word-break:break-word}
+.info .ad-wrap{padding-bottom:4rem}
+.info h3{margin-top:2.5rem}
+.info h2.ad-src{margin-top:3.5rem}
+.nw{white-space:nowrap}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+@media (min-width:900px){
+  .guide{width:380px}
+}
+#inhoud>section.hero{max-width:none!important;padding:16px 20px 0!important;gap:0!important;grid-template-columns:none!important}#inhoud>section.hero>*{grid-column:auto!important}#inhoud>section.info{max-width:none!important;width:100%;padding-left:0!important;padding-right:0!important}.info .ad-wrap{max-width:46rem;margin-left:auto!important;margin-right:auto!important}#inhoud>.hero p.eyebrow{font-size:.68rem;line-height:1.6}#inhoud>.hero p.ratio{font-size:.72rem;line-height:1.6}#inhoud>.hero p.phase{font-size:clamp(2.2rem,10vw,3rem);line-height:1}#inhoud>.hero p.count{font-size:2.1rem;line-height:1.1}#inhoud>.hero p.hint{font-size:.95rem;line-height:1.6}#inhoud>.hero p.progress{font-size:.75rem;line-height:1.6}
+</style>
+</head>
+<body>
+
+
+<div id="top" class="ad-top text-fg">
+<canvas id="zee" aria-hidden="true"></canvas>
+<a class="skip" href="#inhoud">Skip to content</a>
+<header class="wv-head"><a href="/" class="home">willemvroom.com</a><nav><span id="ts" role="group" aria-label="Text size"><button type="button" data-d="-1" aria-label="Smaller text" class="ts-s">A</button><span class="ts-sep" aria-hidden="true">|</span><button type="button" data-d="1" aria-label="Larger text" class="ts-l">A</button></span><button id="thm" type="button" aria-label="Toggle theme"><svg class="moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button></nav></header>
+<main id="inhoud" class="ad-main">
+  <section class="hero" aria-labelledby="titel">
+    <header>
+      <p class="eyebrow">Breathing for the night</p>
+      <h1 id="titel">4-7-8 breathing</h1>
+      <p class="ratio">In <span>4</span> &nbsp;·&nbsp; Hold <span>7</span> &nbsp;·&nbsp; Out <span>8</span></p>
+    </header>
+
+    <div class="stage">
+      <div class="guide" aria-hidden="true">
+        <div class="halo"></div>
+        <div class="glowring"></div>
+        <svg viewBox="0 0 300 300">
+          <defs>
+            <linearGradient id="goud" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f6e4bd"/><stop offset=".55" stop-color="#e2c58f"/><stop offset="1" stop-color="#a8824c"/>
+            </linearGradient>
+            <radialGradient id="schijf" cx="50%" cy="45%" r="55%">
+              <stop offset="0" stop-color="#ffe7b8" stop-opacity=".6"/><stop offset=".5" stop-color="#f0c27e" stop-opacity=".3"/><stop offset="1" stop-color="#e2a96a" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="dotg"><stop offset="0" stop-color="#fff8e6"/><stop offset=".45" stop-color="#f3dfb4"/><stop offset="1" stop-color="#f3dfb4" stop-opacity="0"/></radialGradient>
+          </defs>
+          <circle class="disc" cx="150" cy="150" r="124" fill="url(#schijf)"/>
+          <g class="enso">
+            <circle cx="150" cy="150" r="132" fill="none" stroke="url(#goud)" stroke-width="5" opacity=".9"/>
+            <circle cx="150" cy="150" r="124" fill="none" stroke="#f3dfb4" stroke-width=".8" opacity=".3"/>
+          </g>
+          <circle id="trail" cx="150" cy="150" r="132" fill="none" stroke="#fff6e0" stroke-width="2" stroke-linecap="round" opacity=".75" transform="rotate(-90 150 150)"/>
+          <circle id="dot" cx="150" cy="18" r="13" fill="url(#dotg)"/>
+          <circle id="dotc" cx="150" cy="18" r="3.5" fill="#fff8e6"/>
+        </svg>
+      </div>
+
+      <div class="readout">
+      <p class="phase" id="fase">Ready?</p>
+      <p class="count" id="tel" aria-hidden="true">&nbsp;</p>
+      <p class="hint" id="hint">Sit or lie down comfortably.</p>
+      </div>
+      <p class="sr-only" aria-live="polite" id="live"></p>
+
+      <div class="controls">
+        <button class="btn" id="start" type="button">Start</button>
+        <button class="btn ghost" id="reset" type="button" hidden>Restart</button>
+        <label class="rounds">Rounds
+          <select id="aantal">
+            <option value="4" selected>4</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
+          </select>
+        </label>
+        <label class="rounds">Pace
+          <select id="tempo">
+            <option value="1.25">Slow</option>
+            <option value="1" selected>Normal</option>
+            <option value="0.75">Quick</option>
+          </select>
+        </label>
+      </div>
+      <div class="sound">
+        <div class="seg" role="group" aria-label="Sound" id="geluid">
+          <button type="button" data-m="uit" aria-pressed="true">Off</button>
+          <button type="button" data-m="regen" aria-pressed="false">Soft rain</button>
+          <button type="button" data-m="zee" aria-pressed="false">Ocean waves</button>
+          <button type="button" data-m="gong" aria-pressed="false">Gong</button>
+        </div>
+        <input class="vol" id="volume" type="range" min="0" max="100" value="40" aria-label="Sound volume">
+      </div>
+      <p class="progress" id="voortgang">Round 0 of 4<span class="dots" id="dots" aria-hidden="true"></span></p>
+
+<div class="fire" aria-hidden="true">
+        <i class="fglow"></i><i class="refl"></i>
+        <svg class="fire-back" viewBox="0 0 360 160"><defs><radialGradient id="ember" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffcf7a"/><stop offset=".35" stop-color="#f06a24"/><stop offset=".75" stop-color="#5a1d0c"/><stop offset="1" stop-color="#1a0f0a"/></radialGradient><linearGradient id="stone" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#151214"/><stop offset=".45" stop-color="#2c2524"/><stop offset="1" stop-color="#121013"/></linearGradient></defs>
+          <rect x="150" y="144" width="60" height="1.4" rx=".7" fill="#ffc583" opacity=".35"/><rect x="162" y="149" width="36" height="1.2" rx=".6" fill="#ffc583" opacity=".25"/><rect x="170" y="154" width="20" height="1" rx=".5" fill="#ffc583" opacity=".18"/>
+          <path d="M156 118 L204 118 L214 140 L146 140Z" fill="url(#stone)"/><ellipse cx="180" cy="140" rx="36" ry="3" fill="#0b0a0c"/>
+          <ellipse cx="180" cy="90" rx="96" ry="11" fill="url(#ember)"/>
+        </svg>
+        <div class="flames">
+          <img class="fl f1" src="/breathing/vuur-1.webp" alt="" width="432" height="312" decoding="async">
+          <img class="fl f2" src="/breathing/vuur-2.webp" alt="" width="432" height="312" decoding="async">
+          <img class="fl f3" src="/breathing/vuur-3.webp" alt="" width="432" height="312" decoding="async">
+          <img class="fl f4" src="/breathing/vuur-4.webp" alt="" width="432" height="312" decoding="async">
+        </div>
+        <i class="sp s1"></i><i class="sp s2"></i><i class="sp s3"></i>
+        <svg class="fire-front" viewBox="0 0 360 160"><defs><linearGradient id="bowl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a302a"/><stop offset=".5" stop-color="#1f1a17"/><stop offset="1" stop-color="#0e0c0b"/></linearGradient><radialGradient id="sheen" cx=".5" cy="0" r=".7"><stop offset="0" stop-color="#ff9a4a" stop-opacity=".45"/><stop offset=".5" stop-color="#ff9a4a" stop-opacity=".08"/><stop offset="1" stop-color="#ff9a4a" stop-opacity="0"/></radialGradient><linearGradient id="rim" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6b5444" stop-opacity=".3"/><stop offset=".5" stop-color="#ffc583"/><stop offset="1" stop-color="#6b5444" stop-opacity=".3"/></linearGradient></defs>
+          <path d="M84 90 A96 11 0 0 0 276 90 C272 112 236 124 180 124 C124 124 88 112 84 90Z" fill="url(#bowl)"/>
+          <path d="M84 90 A96 11 0 0 0 276 90 C272 112 236 124 180 124 C124 124 88 112 84 90Z" fill="url(#sheen)"/>
+          <path d="M84 90 A96 11 0 0 0 276 90" fill="none" stroke="url(#rim)" stroke-width="1.6"/>
+        </svg>
+      </div>
+    </div>
+
+    <a class="scroll" href="#over">About this breathing ↓</a>
+  </section>
+
+  <section class="info bg-bg text-fg" id="over" aria-labelledby="over-titel">
+    <div class="ad-wrap mx-auto max-w-3xl px-5 pt-16 sm:px-8 sm:pt-24">
+      <p class="text-sm text-subtle">Background</p>
+      <h2 id="over-titel" class="section-title mt-2">About <span class="nw">4-7-8</span> breathing</h2>
+            <p class="mt-4 text-muted">4-7-8 breathing is also called the <em>Relaxing Breath</em>. You breathe in through your nose for 4 counts, hold your breath for 7 counts and breathe out through your mouth for 8 counts. So the out-breath lasts twice as long as the in-breath.<sup><a href="#b1">1</a>,<a href="#b2">2</a></sup></p>
+
+      <h3 class="font-display text-2xl font-medium tracking-tight">Where does it come from?</h3>
+      <p class="mt-4 text-muted">The American physician Andrew Weil, known for integrative medicine, made the exercise popular. It is inspired by <em>pranayama</em>, the breathing practices of yoga.<sup><a href="#b1">1</a>,<a href="#b3">3</a></sup></p>
+
+      <h3 class="font-display text-2xl font-medium tracking-tight">How to do it</h3>
+      <ol class="steps text-muted">
+        <li>Sit up straight. Before sleep you can also simply lie in bed.<sup><a href="#b1">1</a></sup></li>
+        <li>Rest the tip of your tongue on the ridge just behind your upper front teeth and keep it there for the whole exercise.</li>
+        <li>Breathe out completely through your mouth, with a soft whooshing sound.</li>
+        <li>Close your mouth and breathe in quietly through your nose while counting to <strong>4</strong> in your head.</li>
+        <li>Hold your breath, relaxed, and count to <strong>7</strong>.</li>
+        <li>Breathe out audibly through your mouth and count to <strong>8</strong>. That is one round.</li>
+        <li>Repeat until you have done four rounds. Weil advises no more than four rounds in a row during the first month; later you can go up to eight. Practise at least twice a day.<sup><a href="#b2">2</a></sup></li>
+      </ol>
+      <p class="mt-4 text-muted">What matters is the 4 : 7 : 8 ratio, not exact seconds. If holding is hard, simply count a little faster. With the pace setting above you can count slower or quicker; the ratio stays the same.<sup><a href="#b2">2</a></sup></p>
+
+      <h3 class="font-display text-2xl font-medium tracking-tight">What is it for?</h3>
+      <p class="mt-4 text-muted">The exercise is meant to help you settle down. It may help with tension and worrying, and with falling asleep more easily. The slow breathing may help your nervous system relax, and the counting gives your mind something other than your worries to focus on.<sup><a href="#b1">1</a>,<a href="#b2">2</a></sup></p>
+      <p class="mt-4 text-muted">The scientific evidence is still limited. In a small study of 43 healthy young adults, heart rate and systolic blood pressure dropped right after a few sets of 4-7-8 breathing.<sup><a href="#b4">4</a></sup> Whether it really makes you fall asleep faster has not been well studied.<sup><a href="#b3">3</a></sup> If you have been sleeping badly for weeks, talk to your doctor.</p>
+
+      <div class="note text-muted" role="note">
+        <strong>Note.</strong> At first you may feel a little lightheaded.<sup><a href="#b1">1</a>,<a href="#b2">2</a></sup> If you get dizzy, short of breath or feel unwell, stop and breathe normally.
+      </div>
+
+      <h2 class="section-title ad-src">Sources</h2>
+        <ol class="src mt-4 text-sm text-muted">
+          <li id="b1"><a class="link-line" href="https://health.clevelandclinic.org/4-7-8-breathing" rel="noreferrer noopener" target="_blank">Cleveland Clinic — 4-7-8 Breathing Method for Sleep and Relaxation</a></li>
+          <li id="b2"><a class="link-line" href="https://www.drweil.com/health-wellness/body-mind-spirit/stress-anxiety/three-breathing-exercises-and-techniques/" rel="noreferrer noopener" target="_blank">Andrew Weil, M.D. — Three Breathing Exercises and Techniques</a></li>
+          <li id="b3"><a class="link-line" href="https://psychcentral.com/health/4-7-8-breathing" rel="noreferrer noopener" target="_blank">Psych Central — 4-7-8 Breathing: Benefits and How to Use It</a></li>
+          <li id="b4"><a class="link-line" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9277512/" rel="noreferrer noopener" target="_blank">Vierra et al. (2022), Physiological Reports — Effects of sleep deprivation and 4-7-8 breathing control…</a></li>
+        </ol>
+    </div>
+  </section>
+</main>
+<footer class="border-t border-line bg-bg"><div class="mx-auto flex max-w-6xl flex-col items-center gap-2 px-5 py-8 text-center text-sm text-subtle sm:px-8"><p>willemvroom.com</p><p>© 2026</p></div></footer>
+</div>
+
+<script>
+(() => {
+  const RM = matchMedia('(prefers-reduced-motion: reduce)');
+  const root = document.documentElement;
+  const $ = id => document.getElementById(id);
+  const els = { fase:$('fase'), tel:$('tel'), hint:$('hint'), live:$('live'), start:$('start'), reset:$('reset'),
+    aantal:$('aantal'), tempo:$('tempo'), voortgang:$('voortgang'), dots:$('dots'), dot:$('dot'), dotc:$('dotc'), trail:$('trail'),
+    };
+
+  const PHASES = [
+    { key:'in',   naam:'Breathe in', hint:'quietly through your nose',        dur:4 },
+    { key:'vast', naam:'Hold', hint:'gently, without strain',        dur:7 },
+    { key:'uit',  naam:'Breathe out', hint:'through your mouth, ‘whoosh’',      dur:8 },
+  ];
+  const CYCLE = 19, INTRO = 4;
+  const INTRO_PH = { key:'start', naam:'Breathe out fully', hint:'through your mouth, with a soft ‘whoosh’', dur:INTRO };
+  // triangle vertices
+  const B=[150,18];
+  const ring=f=>{ const a=-Math.PI/2+f*2*Math.PI; return [150+132*Math.cos(a), 150+132*Math.sin(a)]; };
+  const ease=t=>.5-.5*Math.cos(Math.PI*t);
+  const trailLen = els.trail.getTotalLength();
+  els.trail.style.strokeDasharray = trailLen;
+  els.trail.style.strokeDashoffset = trailLen;
+
+  let running=false, elapsed=0, last=0, rounds=4, tempo=1, raf=0, lastPhase=-1, lastCount=-1, finished=false;
+
+  function renderDots(done){
+    els.dots.replaceChildren(...Array.from({length:rounds},(_,i)=>{const d=document.createElement('i'); if(i<done) d.className='done'; return d;}));
+  }
+  function setProgress(done){
+    els.voortgang.firstChild.nodeValue = `Round ${Math.min(done+ (running||elapsed>0?1:0), rounds)} of ${rounds}`;
+    renderDots(done);
+  }
+
+  function draw(T){
+    // T = tellen sinds start (incl. uitademing vooraf)
+    if (T < INTRO){
+      let p = T/INTRO; if (RM.matches) p = Math.floor(T)/INTRO;
+      const breath = .5*(1-ease(p));
+      root.style.setProperty('--breath', breath.toFixed(3));
+      root.style.setProperty('--lean', Math.sin(Math.PI*p).toFixed(3));
+      window.__breath = breath;
+      const cnt = INTRO - Math.floor(T);
+      if (lastPhase!==-2){ lastPhase=-2; els.fase.textContent=INTRO_PH.naam; els.hint.textContent=INTRO_PH.hint;
+        els.live.textContent='First breathe out fully through your mouth'; setProgress(0); window.__onPhase&&window.__onPhase('start'); }
+      if (cnt!==lastCount){ lastCount=cnt; els.tel.textContent=cnt; }
+      sunTo(T/(INTRO+rounds*CYCLE));
+      return;
+    }
+    const t = T - INTRO;
+    const round = Math.floor(t / CYCLE);
+    let c = t - round*CYCLE, pi=0;
+    while (c >= PHASES[pi].dur) { c -= PHASES[pi].dur; pi++; }
+    const ph = PHASES[pi];
+    let p = c / ph.dur;
+    if (RM.matches) p = Math.floor(c) / ph.dur; // stepwise, no smooth motion
+    let breath, pos, trailFrac;
+    if (ph.key==='in'){ breath=ease(p); trailFrac=(p*4)/CYCLE; }
+    else if (ph.key==='vast'){ breath=1; trailFrac=(4+p*7)/CYCLE; }
+    else { breath=1-ease(p); trailFrac=(11+p*8)/CYCLE; }
+    pos=ring(trailFrac);
+    root.style.setProperty('--breath', breath.toFixed(3));
+    root.style.setProperty('--lean', ph.key==='uit' ? Math.sin(Math.PI*p).toFixed(3) : '0');
+    window.__breath = breath; window.__uit = ph.key==='uit';
+    els.dot.setAttribute('cx',pos[0]); els.dot.setAttribute('cy',pos[1]);
+    els.dotc.setAttribute('cx',pos[0]); els.dotc.setAttribute('cy',pos[1]);
+    els.trail.style.strokeDashoffset = trailLen*(1-trailFrac);
+    const cnt = ph.dur - Math.floor(c);
+    const gi = round*3+pi;
+    if (gi!==lastPhase){
+      lastPhase=gi;
+      els.fase.textContent = ph.naam; els.hint.textContent = ph.hint;
+      els.live.textContent = `${ph.naam}, ${ph.dur} counts` + (pi===0 ? `, round ${round+1} of ${rounds}` : '');
+      setProgress(round);
+      if(running) window.__onPhase&&window.__onPhase(ph.key);
+    }
+    if (cnt!==lastCount){ lastCount=cnt; els.tel.textContent = cnt; }
+    sunTo(T/(INTRO+rounds*CYCLE));
+  }
+
+  function frame(now){
+    if (!running) return;
+    elapsed += Math.min(.25,(now-last)/1000)/tempo; last = now;
+    if (elapsed >= INTRO + rounds*CYCLE){ finish(); return; }
+    draw(elapsed);
+    raf = requestAnimationFrame(frame);
+  }
+  function start(){
+    if (finished) resetAll();
+    running=true; last=performance.now();
+    els.start.textContent='Pause'; els.reset.hidden=false; els.aantal.disabled=true; els.tempo.disabled=true;
+    raf=requestAnimationFrame(frame);
+  }
+  function pause(){
+    running=false; cancelAnimationFrame(raf);
+    els.start.textContent='Resume'; els.live.textContent='Paused'; els.hint.textContent='Paused';
+  }
+  function sunTo(v){ window.__sunTarget=Math.max(0,Math.min(1,v)); window.__sunStep&&window.__sunStep(); }
+  function finish(){
+    running=false; finished=true; sunTo(1); window.__onFinish&&window.__onFinish();
+    root.style.setProperty('--breath','0'); root.style.setProperty('--lean','0'); window.__breath=0;
+    els.dot.setAttribute('cx',B[0]); els.dot.setAttribute('cy',B[1]);
+    els.dotc.setAttribute('cx',B[0]); els.dotc.setAttribute('cy',B[1]); els.trail.style.strokeDashoffset=0;
+    els.fase.textContent='Sleep well'; els.tel.innerHTML='&nbsp;'; els.hint.textContent='Breathe normally again and let go.';
+    els.live.textContent=`Done, ${rounds} rounds. Breathe normally again.`;
+    els.voortgang.firstChild.nodeValue=`Round ${rounds} of ${rounds}`; renderDots(rounds);
+    els.start.textContent='Again'; els.aantal.disabled=false; els.tempo.disabled=false;
+  }
+  function resetAll(){
+    sunTo(0);
+    running=false; finished=false; cancelAnimationFrame(raf); elapsed=0; lastPhase=-1; lastCount=-1;
+    root.style.setProperty('--breath','0'); root.style.setProperty('--lean','0'); window.__breath=0;
+    els.trail.style.strokeDashoffset=trailLen;
+    els.dot.setAttribute('cx',B[0]); els.dot.setAttribute('cy',B[1]); els.dotc.setAttribute('cx',B[0]); els.dotc.setAttribute('cy',B[1]);
+    els.fase.textContent='Ready?'; els.tel.innerHTML='&nbsp;'; els.hint.textContent='Sit or lie down comfortably.';
+    els.start.textContent='Start'; els.reset.hidden=true; els.aantal.disabled=false; els.tempo.disabled=false;
+    els.voortgang.firstChild.nodeValue=`Round 0 of ${rounds}`; renderDots(0);
+  }
+  els.start.addEventListener('click',()=> running ? pause() : start());
+  els.reset.addEventListener('click',()=>{ resetAll(); els.live.textContent='Reset'; });
+  els.aantal.addEventListener('change',()=>{ rounds=+els.aantal.value; resetAll(); });
+  els.tempo.addEventListener('change',()=>{ tempo=+els.tempo.value; });
+  document.addEventListener('keydown',e=>{
+    if (e.code==='Space' && !(e.target instanceof HTMLButtonElement) && !(e.target instanceof HTMLSelectElement) && !(e.target instanceof HTMLAnchorElement)){
+      e.preventDefault(); running ? pause() : start();
+    }
+  });
+  document.addEventListener('visibilitychange',()=>{ if(document.hidden && running) pause(); });
+  // test hook for screenshots
+  window.__seek = s => { elapsed=s; draw(s); sunTo(s/(INTRO+rounds*CYCLE)); };
+  resetAll();
+
+  /* ---------- Geluid: regen, zeegolven, gong (Web Audio, geen bestanden) ---------- */
+  const seg=$('geluid'), vol=$('volume'), KEY='wv-adem-geluid';
+  let needResume=false, silentEl=null, ac=null, master=null, noise=null, mode='uit', buses={}, waveIv=0, rainIv=0, swell=0, tick=0, unlocked=false;
+  try{ const st=JSON.parse(localStorage.getItem(KEY)||'{}'); if(['uit','regen','zee','gong'].includes(st.m)) mode=st.m; if(st.v>=0&&st.v<=100) vol.value=st.v; }catch(e){}
+  const save=()=>{ try{ localStorage.setItem(KEY,JSON.stringify({m:mode,v:+vol.value})); }catch(e){} };
+  const paintSeg=()=>{ seg.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.m===mode))); vol.disabled = mode==='uit'; vol.style.setProperty('--v',vol.value+'%'); };
+  paintSeg();
+  const level=()=>1.6*Math.pow(vol.value/100,1.3);
+  function pink(ctx,sec){ // roze ruis (Paul Kellet) met naadloze lus
+    const len=Math.floor(ctx.sampleRate*sec), f=Math.floor(ctx.sampleRate*.5), buf=ctx.createBuffer(2,len,ctx.sampleRate);
+    for(let ch=0;ch<2;ch++){ const x=new Float32Array(len+f); let b0=0,b1=0,b2=0,b3=0,b4=0,b5=0,b6=0;
+      for(let i=0;i<len+f;i++){ const w=Math.random()*2-1;
+        b0=.99886*b0+w*.0555179; b1=.99332*b1+w*.0750759; b2=.969*b2+w*.153852; b3=.8665*b3+w*.3104856;
+        b4=.55*b4+w*.5329522; b5=-.7616*b5-w*.016898; x[i]=(b0+b1+b2+b3+b4+b5+b6+w*.5362)*.11; b6=w*.115926; }
+      const d=buf.getChannelData(ch);
+      // begin = overvloeier van het stuk ná het einde, zodat einde → begin naadloos doorloopt
+      for(let i=0;i<len;i++){ if(i<f){ const k=i/f; d[i]=x[i]*k+x[len+i]*(1-k); } else d[i]=x[i]; } }
+    return buf;
+  }
+  function loop(bus,type,freq,q,g){ const src=ac.createBufferSource(); src.buffer=noise; src.loop=true;
+    const f=ac.createBiquadFilter(); f.type=type; f.frequency.value=freq; f.Q.value=q;
+    const gn=ac.createGain(); gn.gain.value=g; src.connect(f).connect(gn).connect(bus); src.start(0,Math.random()*7); return {f,gn}; }
+  function init(){
+    const AC=window.AudioContext||window.webkitAudioContext; if(!AC) return false;
+    ac=new AC(); noise=pink(ac,8);
+    master=ac.createGain(); master.gain.value=level();
+    const comp=ac.createDynamicsCompressor(); comp.threshold.value=-14; comp.knee.value=12; comp.ratio.value=4; comp.attack.value=.01; comp.release.value=.3;
+    master.connect(comp).connect(ac.destination);
+    ac.onstatechange=()=>{ if(ac.state!=='running' && mode!=='uit' && !document.hidden) needResume=true; };
+    for(const m of ['regen','zee','gong']){ const g=ac.createGain(); g.gain.value=0; g.connect(master); buses[m]=g; }
+    // regen: zacht gefilterde ruis
+    const hp=ac.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=280;
+    const r=loop(hp,'lowpass',1400,.3,.054); hp.connect(buses.regen); buses.regen.main=r.gn;
+    loop(buses.regen,'lowpass',900,.3,.065); // rustige, constante ruis eronder
+    // zee: lage branding + zacht ruisende golf
+    const zr=loop(buses.zee,'lowpass',450,.4,.07); const zs=loop(buses.zee,'lowpass',700,.4,.006);
+    buses.zee.rumble=zr.gn; buses.zee.surf=zs;
+    return true;
+  }
+  let rainT=0;
+  function rainDrift(){ // regen: alleen zachte ruis, met een heel trage, lichte variatie in sterkte (geen toontjes)
+    rainT+=.1; const v=1+.12*Math.sin(rainT*2*Math.PI/23)+.06*Math.sin(rainT*2*Math.PI/9.7);
+    buses.regen.main.gain.setTargetAtTime(.054*v,ac.currentTime,2);
+  }
+  function waves(){ // zee: elke golf zwelt aan, ebt daarna traag weg tot bijna stil (~12% van de top) en zwelt weer aan
+    tick+=.1;
+    const target = running ? (window.__breath||0) : .5-.5*Math.cos(tick*2*Math.PI/13); // in sessie: mee met de adem
+    swell += (target-swell)*.1; const t=ac.currentTime, z=buses.zee, sh=swell*swell*(3-2*swell); // gladde S-curve
+    z.rumble.gain.setTargetAtTime(.105*(.12+.88*sh),t,.6);
+    z.surf.gn.gain.setTargetAtTime(.0005+.006*sh,t,.6); z.surf.f.frequency.setTargetAtTime(560+sh*160,t,.8);
+  }
+
+  const strikes=[];
+  const hold=(prm,t)=>{ if(prm.cancelAndHoldAtTime) prm.cancelAndHoldAtTime(t); else { const v=prm.value; prm.cancelScheduledValues(t); prm.setValueAtTime(v,t); } };
+  function gong(soft){ // diepe, lang doorklinkende gong met zacht zwevende boventonen, zonder tik
+    if(!ac||mode!=='gong') return;
+    const t=ac.currentTime+.03, base=60;
+    // eerdere slagen zacht terugnemen zodat ze niet opstapelen (zonder sprong in volume)
+    while(strikes.length && strikes[0].end<t) strikes.shift();
+    const recent = strikes.length && t-strikes[strikes.length-1].start < 4; // snel achter elkaar: zachter
+    for(const st of strikes){ hold(st.g.gain,t); st.g.gain.setTargetAtTime(0,t,.9); }
+    // [verhouding, sterkte, uitklinktijd]; paren vlak naast elkaar geven een trage zweving
+    const P=[[1,.7,34],[1.004,.5,34],[1.52,.3,28],[1.525,.22,28],[2.0,.45,26],[2.006,.32,26],[2.76,.36,22],[2.767,.26,22],[3.42,.26,18],[3.428,.18,18],[4.2,.2,14],[5.1,.13,10],[6.3,.08,7],[8.1,.05,5]];
+    const out=ac.createGain(), lvl=(soft?.6:.9)*.13*(recent?.45:1); out.gain.value=lvl; out.connect(buses.gong);
+    const trem=ac.createGain(); trem.gain.value=1; trem.connect(out);
+    const lfo=ac.createOscillator(), depth=ac.createGain(); lfo.frequency.value=.28;
+    depth.gain.setValueAtTime(0,t); depth.gain.linearRampToValueAtTime(.16,t+3); // trage, zachte zweving
+    depth.gain.linearRampToValueAtTime(0,t+52); lfo.connect(depth).connect(trem.gain); lfo.start(t); lfo.stop(t+56);
+    const lp=ac.createBiquadFilter(); lp.type='lowpass'; lp.Q.value=.5; lp.frequency.setValueAtTime(1600,t); lp.frequency.exponentialRampToValueAtTime(520,t+20); lp.connect(trem);
+    for(const [r,a,d] of P){ const o=ac.createOscillator(); o.type='sine'; o.frequency.value=base*r;
+      const g=ac.createGain(); g.gain.setValueAtTime(0,t);
+      g.gain.linearRampToValueAtTime(a,t+.08);            // zachte aanslag (80 ms)
+      g.gain.setTargetAtTime(0,t+.08,d/4);                // lange, gladde uitklank
+      o.connect(g).connect(lp); o.start(t); o.stop(t+d*1.6+1); }
+    strikes.push({g:out,start:t,end:t+56});
+  }
+  window.__onPhase = key => { if(key==='in') gong(false); else if(key==='start') gong(true); };
+  window.__onFinish = () => gong(true);
+  function silentLoop(){ // iOS: stil <audio> zodat Web Audio als media speelt, ook met stilknop
+    if(silentEl) return silentEl.play().catch(()=>{});
+    const sr=8000,n=sr/2,b=new ArrayBuffer(44+n*2),v=new DataView(b),w=(o,t)=>{for(let i=0;i<t.length;i++)v.setUint8(o+i,t.charCodeAt(i))};
+    w(0,'RIFF');v.setUint32(4,36+n*2,true);w(8,'WAVE');w(12,'fmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);
+    v.setUint32(24,sr,true);v.setUint32(28,sr*2,true);v.setUint16(32,2,true);v.setUint16(34,16,true);w(36,'data');v.setUint32(40,n*2,true);
+    silentEl=document.createElement('audio'); silentEl.src=URL.createObjectURL(new Blob([b],{type:'audio/wav'}));
+    silentEl.loop=true; silentEl.setAttribute('playsinline',''); silentEl.setAttribute('aria-hidden','true'); silentEl.preload='auto';
+    silentEl.play().catch(()=>{});
+  }
+  function unlockAudio(){ // altijd synchroon binnen de klik/tik aanroepen
+    try{ if(navigator.audioSession) navigator.audioSession.type='playback'; }catch(e){}
+    silentLoop();
+    if(!ac && !init()) return false;
+    if(ac.state!=='running') ac.resume().catch(()=>{});
+    needResume=false; return true;
+  }
+  function apply(fade=1){
+    if(mode==='uit'){ if(ac){ for(const m in buses) buses[m].gain.setTargetAtTime(0,ac.currentTime,.4); clearTimeout(apply.to); apply.to=setTimeout(()=>{ if(mode==='uit'){ clearInterval(waveIv); clearInterval(rainIv); ac.suspend(); if(silentEl) silentEl.pause(); } },2500);} return; }
+    if(!unlockAudio()) return;
+    if(mode==='gong' && !running) gong(true);
+    const t=ac.currentTime;
+    for(const m in buses) buses[m].gain.setTargetAtTime(m===mode?1:0,t,m===mode?fade:.4); // zacht in- en uitfaden
+    clearInterval(waveIv); clearInterval(rainIv);
+    waveIv=setInterval(()=>{ if(buses.zee.gain.value>.001||mode==='zee') waves(); },100);
+    rainIv=setInterval(()=>{ if(mode==='regen') rainDrift(); },100);
+  }
+  seg.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; mode=b.dataset.m; unlocked=true; paintSeg(); save(); apply(); });
+  vol.addEventListener('input',()=>{ vol.style.setProperty('--v',vol.value+'%'); save(); if(ac) master.gain.setTargetAtTime(level(),ac.currentTime,.15); });
+  // bewaarde keuze start pas na een eerste klik/toets (browsers blokkeren autoplay)
+  const unlock=e=>{
+    if(e && e.target && e.target.closest && e.target.closest('#geluid')) return; // de knoppen regelen het zelf
+    if(!unlocked){ unlocked=true; if(mode!=='uit') apply(1.5); return; }
+    if(needResume && mode!=='uit' && !document.hidden) unlockAudio();
+  };
+  for (const ev of ['touchend','click','keydown']) addEventListener(ev,unlock,{passive:true});
+  document.addEventListener('visibilitychange',()=>{
+    if(!ac||mode==='uit') return;
+    if(document.hidden){ master.gain.setTargetAtTime(0,ac.currentTime,.1); setTimeout(()=>{ if(document.hidden){ ac.suspend(); if(silentEl) silentEl.pause(); } },400); }
+    else { if(silentEl) silentEl.play().catch(()=>{}); ac.resume().then(()=>master.gain.setTargetAtTime(level(),ac.currentTime,.8)).catch(()=>{ needResume=true; }); }
+  });
+
+  /* ---------- Zee & ondergaande zon ---------- */
+  const cv = $('zee'), ctx = cv.getContext('2d');
+  let W=0,H=0,dpr=1, t0=performance.now(), bgRaf=0;
+  let sunS=0; // getoonde zonsondergang 0 → 1, volgt de voortgang van de sessie
+  let wave=0; // smoothed breath for waves
+  let hzY=0;
+  function resize(){
+    dpr=Math.min(2,window.devicePixelRatio||1);
+    const hero=document.querySelector('.hero');
+    if (getComputedStyle(cv).position==='absolute') cv.style.height=Math.ceil(hero.getBoundingClientRect().bottom - cv.parentElement.getBoundingClientRect().top)+'px';
+    W=cv.clientWidth||innerWidth; H=cv.clientHeight||innerHeight;
+    // horizon: op smalle schermen net boven de knoppen, zodat zon en tekst elkaar niet raken
+    const ctr=document.querySelector('.controls').getBoundingClientRect(), top=cv.getBoundingClientRect().top;
+    hzY = Math.min(H*.66, ctr.top-top-12); // nooit onder de knoppen (ook iPad staand)
+    const cw=Math.round(W*dpr), ch=Math.round(H*dpr);
+    if (cv.width!==cw || cv.height!==ch){ cv.width=cw; cv.height=ch; ctx.setTransform(dpr,0,0,dpr,0,0); }
+    paint(performance.now()); // direct tekenen: een gewist canvas mag nooit zichtbaar zijn
+  }
+  const mix=(a,b,t)=>a.map((v,i)=>Math.round(v+(b[i]-v)*t));
+  const rgb=(c,a=1)=>`rgba(${c[0]},${c[1]},${c[2]},${a})`;
+  // sky palettes: [top, mid, horizon]
+  const DUSK0=[[28,30,66],[150,86,110],[246,170,104]];
+  const DUSK1=[[10,14,36],[46,34,74],[150,74,74]];
+  function paint(now){
+    const T = (now - t0)/1000;
+    const s = sunS, d = s*.6; // d: lucht wordt maar licht donkerder
+    const hz = hzY || H*.66; // horizon
+    const sky = DUSK0.map((c,i)=>mix(c,DUSK1[i],d));
+    let g = ctx.createLinearGradient(0,0,0,hz);
+    g.addColorStop(0,rgb(sky[0])); g.addColorStop(.55,rgb(sky[1])); g.addColorStop(1,rgb(sky[2]));
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,hz+1);
+    // stars as it darkens
+    if (d>.2){
+      ctx.fillStyle=`rgba(255,244,220,${(d-.2)*.8})`;
+      for(let i=0;i<70;i++){ const x=(i*733.1%1)*W, y=((i*421.7)%1)*hz*.6; const r=(i%3? .6:1); ctx.fillRect((x+i*37)%W,(y+i*13)%(hz*.6),r,r); }
+    }
+    // sun
+    const R = W<700 ? W*.055 : Math.min(W,H)*.085;
+    const sy = hz - R*1.1 + s*R*1.95; // aan het eind steekt alleen een smal randje boven de horizon
+    const sx = W*(W>=700 ? .74 : .9);
+    const halo = ctx.createRadialGradient(sx,sy,R*.3,sx,sy,R*6);
+    halo.addColorStop(0,`rgba(255,214,150,${.55*(1-s*.7)})`); halo.addColorStop(1,'rgba(255,170,110,0)');
+    ctx.fillStyle=halo; ctx.fillRect(0,0,W,hz);
+    ctx.save(); ctx.beginPath(); ctx.rect(0,0,W,hz); ctx.clip();
+    const sg = ctx.createLinearGradient(0,sy-R,0,sy+R);
+    sg.addColorStop(0,'#fff1cf'); sg.addColorStop(1,rgb(mix([255,170,96],[226,96,70],s)));
+    ctx.fillStyle=sg; ctx.beginPath(); ctx.arc(sx,sy,R,0,Math.PI*2); ctx.fill(); ctx.restore();
+    // sea
+    const seaTop=mix([70,52,84],[18,20,44],d), seaBot=mix([14,18,44],[6,8,22],d);
+    g = ctx.createLinearGradient(0,hz,0,H); g.addColorStop(0,rgb(seaTop)); g.addColorStop(1,rgb(seaBot));
+    ctx.fillStyle=g; ctx.fillRect(0,hz,W,H-hz);
+    // reflection shimmer
+    const vis = Math.max(0, 1 - s*.92);
+    const amp = 1 + wave*1.6;
+    for(let i=0;i<46;i++){
+      const y = hz + 3 + Math.pow(i/46,1.5)*(H-hz)*.92;
+      const k = i/46;
+      const w0 = R*(1.1 + k*2.2) * (1 - s*.65) * (0.55+0.45*Math.sin(T*0.9 + i*1.7));
+      const off = Math.sin(T*0.6 + i*0.8)*R*0.25*k;
+      ctx.fillStyle=`rgba(255,${200-k*40},${140-k*40},${(.55-.45*k)*vis})`;
+      ctx.fillRect(sx - w0/2 + off, y, w0, 1.2 + k*2.2);
+    }
+    // gentle wave lines, rising & falling with breath
+    ctx.lineWidth=1;
+    for(let j=0;j<7;j++){
+      const k=j/7, y0 = hz + 10 + Math.pow(k,1.4)*(H-hz)*.9;
+      ctx.strokeStyle=`rgba(243,223,180,${.05+.06*(1-k)})`;
+      ctx.beginPath();
+      for(let x=0;x<=W;x+=12){
+        const y = y0 + Math.sin(x*0.012 + T*0.5 + j)*(1.5+k*4)*amp - wave*(2+k*6);
+        x? ctx.lineTo(x,y) : ctx.moveTo(x,y);
+      }
+      ctx.stroke();
+    }
+    // horizon line glow
+    ctx.fillStyle=`rgba(255,220,170,${.25*vis+.05})`; ctx.fillRect(0,hz,W,1);
+  }
+  let lastBg=0;
+  function bgLoop(now){
+    bgRaf=requestAnimationFrame(bgLoop);
+    if (now-lastBg < 33) return; // ~30 fps is genoeg voor rust
+    lastBg=now;
+    wave += ((window.__breath||0) - wave)*0.08;
+    const tgt=window.__sunTarget||0; sunS += (tgt-sunS)*(tgt<sunS ? .025 : .12); // terug omhoog: rustig in ~3 s
+    if (Math.abs(tgt-sunS)<.0005) sunS=tgt;
+    paint(now);
+  }
+  let inView=true;
+  function startBg(){ if(!RM.matches && !bgRaf && !document.hidden && inView) bgRaf=requestAnimationFrame(bgLoop); }
+  function stopBg(){ cancelAnimationFrame(bgRaf); bgRaf=0; }
+  addEventListener('resize',resize);
+  if ('IntersectionObserver' in window) new IntersectionObserver(([e])=>{ inView=e.isIntersecting; document.documentElement.classList.toggle('uit-beeld',!inView); inView ? startBg() : stopBg(); }).observe(document.querySelector('.hero'));
+  if ('ResizeObserver' in window) new ResizeObserver(()=>resize()).observe(document.querySelector('.hero'));
+  document.addEventListener('visibilitychange',()=> document.hidden ? stopBg() : startBg());
+  RM.addEventListener('change',()=>{ stopBg(); resize(); startBg(); });
+  if (document.fonts) document.fonts.ready.then(resize);
+  addEventListener('load',resize);
+  resize(); startBg();
+  window.__paintAt = sec => { t0 = performance.now() - sec*1000; sunS = window.__sunTarget||0; paint(performance.now()); };
+  // reduced motion: zon verspringt per tel, geen vloeiende beweging
+  window.__sunStep = () => { if (RM.matches){ sunS = window.__sunTarget||0; paint(performance.now()); } };
+})();
+</script>
+<script src="/site.js?v=20261020-n2"></script>
+</body>
+</html>
