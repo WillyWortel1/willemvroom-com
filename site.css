@@ -100,4 +100,4 @@ html.dark a.connect-btn{background:#d62828;color:#fff}
 a.connect-btn:focus-visible{outline:3px solid #ff2a3a;outline-offset:2px}
 
 /* In-hero text link to the Dutch site */
-#inhoud>section:first-child a.link-line{color:var(--accent)}
+#inhoud>section:first-child a.link-line{color:var(--accent);text-decoration:underline;text-underline-offset:.15em;text-decoration-thickness:1px}
