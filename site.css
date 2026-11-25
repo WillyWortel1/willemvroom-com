@@ -98,3 +98,6 @@ a.connect-btn{display:inline-flex;align-items:center;justify-content:center;min-
 html.dark a.connect-btn{background:#d62828;color:#fff}
 @media (hover:hover){a.connect-btn:hover{opacity:.7}}
 a.connect-btn:focus-visible{outline:3px solid #ff2a3a;outline-offset:2px}
+
+/* In-hero text link to the Dutch site */
+#inhoud>section:first-child a.link-line{color:var(--accent)}
