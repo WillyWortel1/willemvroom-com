@@ -92,3 +92,9 @@ html.dark #top>header.wv-head{box-shadow:0 0 0 100vmax var(--color-bg),0 1px 0 1
 html.dark{--color-subtle-text:#a1a1aa;--accent:#e64545}
 /* Text-size control is in the HTML; hide it when scripts cannot run it */
 @media (scripting:none){#ts{visibility:hidden}}
+
+/* Homepage Let’s connect button */
+a.connect-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;margin-top:1.5rem;background:#d62828;color:#fff;font-size:.875rem;font-weight:500;border-radius:10px;text-decoration:none;-webkit-tap-highlight-color:transparent}
+html.dark a.connect-btn{background:#d62828;color:#fff}
+@media (hover:hover){a.connect-btn:hover{opacity:.7}}
+a.connect-btn:focus-visible{outline:3px solid #ff2a3a;outline-offset:2px}
